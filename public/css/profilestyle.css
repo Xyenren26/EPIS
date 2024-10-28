@@ -1,0 +1,425 @@
+/* profilestyle.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100vh; /* Full height of the viewport */
+}
+
+/* Container for sidebar and main content */
+.container {
+    display: flex;
+    height: 100%; /* Full height */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px; /* Set sidebar width */
+    background-color: white;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    display: flex;
+    flex-direction: column; /* Arrange links vertically */
+    height: 100%; /* Full height */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+    overflow: hidden; /* Prevent overflow of content */
+}
+
+/* Minimize button styles */
+.minimize-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.minimize-btn::before {
+    content: '\2630'; /* Hamburger icon */
+}
+
+/* Search styles */
+.search-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex-grow: 1; /* Take up available space */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px; /* Rounded corners */
+    margin-right: 5px; /* Space between input and button */
+    width: 130px; /* Adjust width */
+}
+
+.search-btn {
+    background-color: #003067; /* Color background */
+    color: white; /* White text */
+    border: none;
+    padding: 6px 10px; /* Padding */
+    cursor: pointer;
+    border-radius: 3px; /* Rounded corners */
+}
+
+/* Add margin to sidebar elements */
+.sidebar-header {
+    margin-bottom: 15px; /* Space below minimize button */
+}
+
+.search-container {
+    margin-bottom: 15px; /* Space below search bar */
+}
+
+/* Navigation styles */
+.nav-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    flex-grow: 1; /* Allow nav links to take available space */
+}
+
+.nav-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Text color matches parent */
+    display: flex; /* Flex container for logo and text */
+    align-items: center; /* Center items vertically */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+/* Update padding for nav items to add space */
+.nav-item {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align to the left */
+    padding: 10px 0; /* Space between links */
+    border-radius: 20px; /* Rounded corners for oval effect */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    color: #003067;
+}
+
+/* Smaller nav-label */
+.nav-label {
+    font-size: 12px; /* Smaller font size for labels */
+}
+
+/* Change nav-text size */
+.nav-text {
+    font-size: 14px; /* Adjust text size if needed */
+}
+
+/* Logo and label container */
+.nav-logo-container {
+    display: flex;
+    flex-direction: column; /* Stack logo above label */
+    align-items: center; /* Center items horizontally */
+    gap: 5px; /* Space between logo and label */
+}
+
+.nav-logo {
+    width: 24px; /* Adjust logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Hover effect for nav items */
+.nav-item:hover {
+    background-color: #003067; /* Dark blue background */
+    color: white; /* Text color change */
+}
+
+.nav-item:hover .nav-link,
+.nav-item:hover .nav-logo 
+.nav-item:hover .nav-label {
+    color: white; /* Change logo and text color */
+}
+
+/* Additional spacing on nav items */
+.nav-item:not(:last-child) {
+    margin-bottom: 10px; /* Space between each nav item */
+}
+
+/* Ensure minimized sidebar styles remain unchanged */
+.sidebar.minimized .nav-item {
+    justify-content: center; /* Center when minimized */
+}
+
+/* Minimized sidebar styles */
+.sidebar.minimized {
+    width: 50px; /* Set minimized width */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.sidebar.minimized .nav-text {
+    display: none; /* Hide text */
+}
+
+.sidebar .nav-item {
+    justify-content: left; /* Default justify */
+}
+
+.sidebar.minimized .nav-item {
+    justify-content: center; /* Center when minimized */
+}
+
+.sidebar .nav-label {
+    display: none; /* Hide labels when maximized */
+}
+
+.sidebar.minimized .nav-label {
+    display: inline; /* Show labels when minimized */
+}
+
+.sidebar.minimized .search-input {
+    display: none; /* Hide search input */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between elements */
+    margin-bottom: 20px; /* Space below header */
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size for back button */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size for menu button */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.menu {
+    position: absolute; /* Position it over the content */
+    top: 60px; /* Adjust position based on header height */
+    right: 20px; /* Align to the right */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+.menu ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 10px; /* Padding inside menu */
+    margin: 0; /* Remove margin */
+}
+
+.menu li {
+    padding: 5px 0; /* Padding for each item */
+}
+
+.menu a {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+}
+
+/* Show menu on button click */
+.menu.show {
+    display: block; /* Show menu when active */
+}
+
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1; /* Take remaining space */
+    padding: 20px;
+}
+
+.main-content h1 {
+    text-align: center; /* Center title */
+    font-size: 24px; /* Font size */
+    margin-bottom: 20px; /* Space below title */
+    color: #333; /* Title color */
+    letter-spacing: 10px; /* Adjust letter spacing */
+}
+
+/* Design for Information button and security*/
+.button {
+    display: flex;
+    gap: 10px; /* Adjust spacing between buttons as needed */
+    margin-bottom: 20px; /* Add margin below the button container */
+}
+
+.nav-button {
+    border: 2px solid #003067; /* Default stroke color */
+    background-color: transparent; /* No fill */
+    color: #003067; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.nav-button.active {
+    background-color: #003067; /* Fill color for active button */
+    color: white; /* Text color for active button */
+}
+
+.nav-button:not(.active):hover {
+    background-color: transparent; /* No fill on hover */
+    color: #003067; /* Text color on hover */
+}
+
+/* Optional: Logo styling (if you are using icons) */
+.nav-button .logo {
+    fill: #003067; /* Logo color for active */
+}
+
+.nav-button.active .logo {
+    fill: white; /* Logo color for active state */
+}
+
+
+/* Information field and Profile Style */
+/* Form Grouping */
+.form-group {
+    margin-bottom: 15px; /* Space between fields */
+}
+
+/* Flexbox Row for Form Items */
+.row {
+    display: flex; /* Align items in a row */
+    justify-content: space-between; /* Space between items */
+    flex-wrap: wrap; /* Allow items to wrap onto the next line if needed */
+}
+
+/* Styling for Each Form Item */
+.form-item {
+    flex: 1 1 30%; /* Allow flex items to grow, shrink and set the base width */
+    margin-right: 10px; /* Space between items */
+    min-width: 150px; /* Minimum width for the input boxes */
+}
+
+/* Remove Margin for the Last Item in Each Row */
+.row .form-item:last-child {
+    margin-right: 0; /* Remove right margin */
+}
+
+/* Label Styles */
+label {
+    color: #003067; /* Label color */
+}
+
+/* Input Styles */
+.form-group input[type="text"] {
+    border: 2px solid #003067; /* Input stroke color */
+    padding: 8px; /* Padding inside inputs */
+    border-radius: 5px; /* Rounded corners */
+    color: #003067; /* Input text color */
+    background-color: transparent; /* No fill */
+    width: calc(100% - 20px); /* Adjust to make width responsive based on container */
+    min-width: 300px; /* Minimum width for input fields */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Readonly Input Styles */
+.form-group input[readonly] {
+    background-color: #f4f4f4; /* Light gray background for readonly */
+}
+
+/* Profile Info Container */
+.profile-info-container {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    margin-top: 10px; /* Reduced space above the profile info */
+    gap: 20px; /* Space between profile info and picture */
+}
+
+/* Adjust Profile Picture Size */
+.profile-picture {
+    width: 150px; /* Increase width */
+    height: 150px; /* Increase height */
+    border-radius: 50%; /* Makes the image circular */
+    border: 3px solid #003067; /* Circle border with stroke color */
+    object-fit: cover; /* Ensures the image covers the container */
+    margin-bottom: 10px; /* Space below the picture */
+}
+
+/* Profile Picture Container */
+.profile-picture-container {
+    display: flex;
+    flex-direction: column; /* Stack image and label vertically */
+    align-items: center; /* Center align items */
+    margin-left: 20px; /* Space to the left of the image */
+}
+
+/* Profile Picture Label Styles */
+.profile-picture-label {
+    margin-top: 5px; /* Space between image and label */
+    color: #003067; /* Label color */
+    font-size: 16px; /* Increase font size for the label */
+}
+
+
+/* edit and remove design */
+.action-button {
+    display: flex; /* Align buttons in a row */
+    justify-content: center; /* Center the buttons */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Space above the button container */
+}
+
+.action-button button {
+    border: 2px solid #003067; /* Stroke color */
+    background-color: transparent; /* No fill */
+    color: #003067; /* Text color */
+    padding: 10px 20px; /* Padding for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.action-button button:hover {
+    background-color: #003067; /* Fill color on hover */
+    color: white; /* Text color on hover */
+}
+
+.action-button button i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.action-button button:hover i {
+    color: white; /* Icon color on hover */
+}
+
+/* Adjustments for mobile responsiveness */
+@media (max-width: 768px) {
+    .form-item {
+        flex-basis: calc(50% - 10px); /* Two items per row on smaller screens */
+    }
+
+    .form-group input[type="text"] {
+        min-width: 100%; /* Ensure full width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .form-item {
+        flex-basis: 100%; /* One item per row on extra small screens */
+    }
+
+    .form-group input[type="text"] {
+        min-width: 100%; /* Ensure full width on extra small screens */
+    }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50px; /* Smaller width for mobile */
+    }
+
+    .main-content {
+        margin-left: 60px; /* Adjust for smaller sidebar */
+    }
+}
+
+
