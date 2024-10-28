@@ -9,10 +9,19 @@ class ProfileController extends Controller
 {
     public function showProfile()
     {
-        // Fetch the first record from account_tables
-        $account = AccountTable::first();
+        // Retrieve the user ID from the session
+        $userId = session('user_id');
 
-        // Pass the data to the profile Blade view
+        // Fetch the account associated with the current user ID
+        $account = AccountTable::where('EmployeeID', $userId)->first();
+
+        // Check if the account exists
+        if (!$account) {
+            // Handle the case where the account is not found (e.g., redirect or show an error)
+            return redirect()->route('login')->withErrors(['login' => 'Account not found.']);
+        }
+
+        // Pass the account data to the profile Blade view
         return view('profile', ['account' => $account]);
     }
 }

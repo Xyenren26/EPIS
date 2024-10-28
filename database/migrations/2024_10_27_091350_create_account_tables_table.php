@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('account_tables', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing ID
+            $table->string('EmployeeID')->primary(); // Set EmployeeID as the primary key
             $table->string('FirstName');
             $table->string('LastName');
             $table->string('Suffix')->nullable(); // Optional field
             $table->date('BirthDate');
             $table->integer('Age');
             $table->enum('Gender', ['Male', 'Female', 'Others']); // Limited to specified values
-            $table->string('EmployeeID')->unique(); // Unique employee ID
             $table->string('Address');
             $table->string('PhoneNumber');
             $table->string('Email')->unique(); // Unique email

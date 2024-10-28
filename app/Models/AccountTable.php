@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
 class AccountTable extends Model
 {
-    protected $table = 'account_tables'; // Specify the table name if it doesn't follow Laravel's naming convention
+    protected $table = 'account_tables'; // Specify the table name
+
+    protected $primaryKey = 'EmployeeID'; // Set the primary key to EmployeeID
 
     protected $fillable = [
         'FirstName',
@@ -24,4 +27,5 @@ class AccountTable extends Model
         'Username',
         'Password',
     ];
+
 }
