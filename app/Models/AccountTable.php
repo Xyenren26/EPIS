@@ -11,6 +11,9 @@ class AccountTable extends Authenticatable
 
     protected $table = 'account_tables';
     protected $primaryKey = 'EmployeeID';
+    protected $casts = [
+        'EmployeeID' => 'string', // Ensure EmployeeID is treated as a string(only we inlcuded for employee id that has "-")
+    ];
     protected $fillable = [
         'FirstName', 'LastName', 'Suffix', 'BirthDate', 'Age', 'Gender',
         'EmployeeID', 'Address', 'PhoneNumber', 'Email', 'ProfilePicture',

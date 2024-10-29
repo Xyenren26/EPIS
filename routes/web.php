@@ -17,7 +17,6 @@ Route::post('/login', [LoginController::class, 'login']);
 // Routes for logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
 // Routes for signup
 Route::get('/signup', [SignupController::class, 'showSignup'])->name('signup');
 Route::post('/signup', [SignupController::class, 'handleSignup']);

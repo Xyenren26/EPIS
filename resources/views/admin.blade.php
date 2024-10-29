@@ -97,26 +97,29 @@
                     </div>
                 </div>
 
-                <!-- Employee Details Section -->
-                @if($currentUser)
-                <div class="employee-container">
-                    <div class="employee-photo">
-                        <img src="data:image/jpeg;base64,{{ base64_encode($currentUser->ProfilePicture) }}" alt="Profile Picture">
-                    </div>
-                    <div class="employee-info">
-                        <h3>{{ $currentUser->FirstName }} {{ $currentUser->LastName }}</h3>
-                        <p>ID: {{ $currentUser->EmployeeID }}</p>
-                        <p>Account Type: {{ $currentUser->AccountType }}</p>
-                        <p>Status: {{ $currentUser->status ?? 'N/A' }}</p> <!-- Show status -->
-                        <p>Time In: {{ $currentUser->time_in ?? 'Not logged in' }}</p> <!-- Show time-in if available -->
+                
+            <!-- Active Accounts Section -->
+            @if($activeAccounts->isNotEmpty())
+                @foreach($activeAccounts as $account)
+                    <div class="employee-container">
+                        <div class="employee-photo">
+                            <img src="data:image/jpeg;base64,{{ base64_encode($account->ProfilePicture) }}" alt="Profile Picture">
+                        </div>
+                        <div class="employee-info">
+                            <h3>{{ $account->FirstName }} {{ $account->LastName }}</h3>
+                            <p>ID: {{ $account->EmployeeID }}</p>
+                            <p>User: {{ $account->Username }}</p>
+                            <p>Account Type: {{ $account->AccountType }}</p>
+                            <p>Status: {{ $account->status }}</p>
+                            <p>Time In: {{ $account->time_in ?? 'Not logged in' }}</p>
+                        </div>
                         <button class="view-btn">View</button>
                     </div>
-                </div>
-                @else
-                <p>No employee data available.</p>
-                @endif
-            </div>
-
+                @endforeach
+            @else
+                <p>No active employee data available.</p>
+            @endif
+        </div>
             <!-- Pending Modal -->
             <div id="pendingModal" class="modal">
                 <div class="modal-content">

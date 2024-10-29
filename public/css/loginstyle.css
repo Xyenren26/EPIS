@@ -138,8 +138,13 @@ body::before {
 }
 
 .login-container .error-message{
-    margin: 10px;
-    justify-content: center;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text if it's multi-line */
+    color: #ff0000; /* Optional: Red color for error */
+    padding: 10px; /* Optional: Add some padding */
+    font-weight: bold; /* Optional: Bold text */
 }
 
 
