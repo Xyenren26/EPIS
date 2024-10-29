@@ -139,6 +139,7 @@ body::before {
 
 .login-container .error-message{
     margin: 10px;
+    justify-content: center;
 }
 
 

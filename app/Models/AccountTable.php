@@ -2,30 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable; // Add this
+use Illuminate\Notifications\Notifiable;
 
-class AccountTable extends Model
+class AccountTable extends Authenticatable
 {
-    protected $table = 'account_tables'; // Specify the table name
+    use Notifiable;
 
-    protected $primaryKey = 'EmployeeID'; // Set the primary key to EmployeeID
-
+    protected $table = 'account_tables';
+    protected $primaryKey = 'EmployeeID';
     protected $fillable = [
-        'FirstName',
-        'LastName',
-        'Suffix',
-        'BirthDate',
-        'Age',
-        'Gender',
-        'EmployeeID',
-        'Address',
-        'PhoneNumber',
-        'Email',
-        'ProfilePicture',
-        'AccountType',
-        'Username',
-        'Password',
+        'FirstName', 'LastName', 'Suffix', 'BirthDate', 'Age', 'Gender',
+        'EmployeeID', 'Address', 'PhoneNumber', 'Email', 'ProfilePicture',
+        'AccountType', 'Username', 'Password',
     ];
 
+    protected $hidden = [
+        'Password', // Hide the password attribute
+    ];
+
+    // Define the attribute as 'password' to let Auth recognize it
+    public function getAuthPassword()
+    {
+        return $this->Password;
+    }
 }

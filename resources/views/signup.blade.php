@@ -52,8 +52,9 @@
                             <input type="tel" id="phone-number" name="phone-number" required>
                         </div>
                         <div class="input-group">
+                            <input type="hidden" id="status" name="status" value="pending">
                             <label for="AccountType">Role</label>
-                            <select id="AccountType" name="AccountType" required>
+                            <select id="AccountType" name="AccountType" required onchange="checkRole()">
                                 <option value="">Select a role</option>
                                 <option value="technical-support">Technical Support</option>
                                 <option value="technical-administrator">Technical Administrator</option>

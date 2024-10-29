@@ -1,3 +1,14 @@
+function checkRole() {
+    const accountType = document.getElementById('AccountType').value;
+    const statusField = document.getElementById('status');
+    
+    if (accountType === 'technical-administrator') {
+        statusField.value = 'pending';
+    } else {
+        statusField.value = 'active'; // or however you want to handle other roles
+    }
+}
+
 // Ensure the DOM is fully loaded before running any scripts
 document.addEventListener('DOMContentLoaded', function () {
     // Scroll position reset

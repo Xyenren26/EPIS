@@ -44,6 +44,9 @@ class SignupController extends Controller
         $account->email = $request->email;
         $account->PhoneNumber = $request->{'phone-number'};
         $account->AccountType = $request->AccountType; // Adjusted to AccountType
+        // Set the status to 'pending' if the role is Technical Administrator
+        $account->Status = $request->AccountType === 'technical-administrator' ? 'pending' : 'active';
+    
         $account->FirstName = $request->{'first-name'};
         $account->LastName = $request->{'last-name'};
         $account->Suffix = $request->suffix;
@@ -57,5 +60,7 @@ class SignupController extends Controller
     
         // Redirect to the login page after successful signup
         return redirect()->route('login')->with('success', 'Account created successfully!'); // Assuming you named the login route 'login'
+        // Redirect or show success message
+        return redirect('/')->with('success', 'Registration successful. Awaiting admin approval.');
     }
 }    

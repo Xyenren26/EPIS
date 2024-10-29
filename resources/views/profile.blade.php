@@ -187,9 +187,14 @@
             <div class="menu" id="menu" style="display: none;">
                 <ul>
                     <li><a href="/home">Home</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
                 </ul>
             </div>
+
+             <!-- Hidden Logout Form -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </div>
     </div>
     <script src="js/profilejavascript.js"></script>
