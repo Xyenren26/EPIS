@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
@@ -10,18 +11,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
-// Heartbeat route to update user activity
-Route::post('/heartbeat', function () {
-    $userId = session('user_id');
-    if ($userId) {
-        DB::table('account_tables')
-            ->where('EmployeeID', $userId)
-            ->update(['updated_at' => now()]);
-    }
-    return response()->json(['status' => 'Heartbeat received']);
-});
 
 // Routes for login
 Route::get('/', [LoginController::class, 'showLogin'])->name('login'); // Default route
@@ -38,7 +27,7 @@ Route::post('/signup', [SignupController::class, 'handleSignup']);
 Route::get('/forgotpassword', [ForgotPasswordController::class, 'showForgotPassword']);
 
 // Protecting routes using 'auth' middleware
-Route::middleware([\App\Http\Middleware\UpdateLastActivity::class, \App\Http\Middleware\ClearExpiredSessions::class])->group(function () {
+Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->group(function () {
     // Route for home
     Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 

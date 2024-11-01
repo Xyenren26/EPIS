@@ -32,9 +32,7 @@ return [
     |
     */
 
-    'lifetime' => request()->has('remember') 
-    ? env('REMEMBER_ME_LIFETIME', 43200) 
-    : env('SESSION_LIFETIME', 5),
+    $lifetime = env('SESSION_LIFETIME', 5), // Default session lifetime
 
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', true),

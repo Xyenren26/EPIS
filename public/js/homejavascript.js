@@ -1,8 +1,3 @@
-setInterval(() => {
-    fetch('/heartbeat', { method: 'POST' });
-}, 60000); // Sends a request every 60 seconds
-
-
 // Ensure the sidebar is minimized on load
 window.onload = function() {
     const sidebar = document.querySelector('.sidebar');
