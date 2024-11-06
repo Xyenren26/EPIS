@@ -90,7 +90,7 @@
                     <i class="fas fa-tasks"></i> <!-- Task icon -->
                     Monitoring
                 </button>
-                <a href="/ticketing">
+                <a href="/ticketing/ticketing">
                     <button class="icon-button">
                         <i class="fas fa-ticket-alt"></i> <!-- Ticket icon -->
                         Ticketing

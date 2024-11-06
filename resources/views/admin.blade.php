@@ -112,6 +112,7 @@
                             <p>Account Type: {{ $account->AccountType }}</p>
                             <p>Status: {{ $account->status }}</p>
                             <p>Time In: {{ $account->time_in ?? 'Not logged in' }}</p>
+                            <p>Time out: {{ $account->time_out ?? 'Not logged out' }}</p>
                         </div>
                         <button class="view-btn">View</button>
                     </div>

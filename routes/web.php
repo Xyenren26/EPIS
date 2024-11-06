@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TicketingController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Auth;
 
 // Routes for login
 Route::get('/', [LoginController::class, 'showLogin'])->name('login'); // Default route
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login'])->middleware('ClearExpiredSession');
+
 
 // Routes for logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -32,7 +33,9 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/home', [HomeController::class, 'showHome'])->name('home');
 
     // Route for ticketing
-    Route::get('/ticketing', [TicketingController::class, 'showTicketing']);
+    Route::get('/ticketing/ticketing', [TicketController::class, 'showTicketing']);
+    Route::get('/ticket', [TicketController::class, 'create']);
+    Route::post('/ticket', [TicketController::class, 'store']);
 
     // Route for profile
     Route::get('/profile', [ProfileController::class, 'showProfile']);

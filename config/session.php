@@ -32,7 +32,7 @@ return [
     |
     */
 
-    $lifetime = env('SESSION_LIFETIME', 5), // Default session lifetime
+    $lifetime = env('SESSION_LIFETIME', 60), // Default session lifetime
 
 
     'expire_on_close' => env('SESSION_EXPIRE_ON_CLOSE', true),

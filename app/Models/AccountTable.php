@@ -17,7 +17,7 @@ class AccountTable extends Authenticatable
     protected $fillable = [
         'FirstName', 'LastName', 'Suffix', 'BirthDate', 'Age', 'Gender',
         'EmployeeID', 'Address', 'PhoneNumber', 'Email', 'ProfilePicture',
-        'AccountType', 'Username', 'Password', 'remember_token', 'last_activity',
+        'AccountType', 'Username', 'Password', 'remember_token', 'last_activity','time_in','time_out'
     ];
 
     protected $hidden = [

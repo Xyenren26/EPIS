@@ -34,7 +34,7 @@ class SignupController extends Controller
         ]);
     
         // Calculate Age from the provided BirthDate
-        $birthDate = Carbon::createFromFormat('Y-m-d', $request->dob);
+        $birthDate = Carbon::createFromFormat('m-d-y', $request->dob);
         $age = Carbon::now()->diffInYears($birthDate);
     
         // Create a new user account

@@ -1,0 +1,620 @@
+/* homestyle.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Container for sidebar and main content */
+.container {
+    display: flex;
+    min-height: 100vh; /* Minimum height of the viewport, but will expand with content */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px; /* Set sidebar width */
+    background-color: white;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    display: flex;
+    flex-direction: column; /* Arrange links vertically */
+    overflow: hidden; /* Prevent overflow of content */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Minimize button styles */
+.minimize-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.minimize-btn::before {
+    content: '\2630'; /* Hamburger icon */
+}
+
+/* Search styles */
+.search-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex-grow: 1; /* Take up available space */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px; /* Rounded corners */
+    margin-right: 5px; /* Space between input and button */
+    width: 150px; /* Adjust width */
+}
+
+.search-btn {
+    background-color: #003067; /* color background */
+    color: white; /* White text */
+    border: none;
+    padding: 6px 10px; /* Padding */
+    cursor: pointer;
+    border-radius: 3px; /* Rounded corners */
+}
+
+/* Add margin to sidebar elements */
+.sidebar-header {
+    margin-bottom: 15px; /* Space below minimize button */
+}
+
+.search-container {
+    margin-bottom: 15px; /* Space below search bar */
+}
+
+/* Navigation styles */
+.nav-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    flex-grow: 1; /* Allow nav links to take available space */
+}
+
+.nav-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Text color matches parent */
+    display: flex; /* Flex container for logo and text */
+    align-items: center; /* Center items vertically */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+/* Update padding for nav items to add space */
+.nav-item {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align to the left */
+    padding: 10px 0; /* Space between links */
+    border-radius: 20px; /* Rounded corners for oval effect */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    color: #003067;
+}
+
+/* Smaller nav-label */
+.nav-label {
+    font-size: 12px; /* Smaller font size for labels */
+}
+
+/* Change nav-text size */
+.nav-text {
+    font-size: 14px; /* Adjust text size if needed */
+}
+
+/* Logo and label container */
+.nav-logo-container {
+    display: flex;
+    flex-direction: column; /* Stack logo above label */
+    align-items: center; /* Center items horizontally */
+    gap: 5px; /* Space between logo and label */
+}
+
+.nav-logo {
+    width: 24px; /* Adjust logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Hover effect for nav items */
+.nav-item:hover {
+    background-color: #003067; /* Dark blue background */
+    color: white; /* Text color change */
+}
+
+.nav-item:hover .nav-link,
+.nav-item:hover .nav-logo 
+.nav-item:hover .nav-label {
+    color: white; /* Change logo and text color */
+}
+
+/* Additional spacing on nav items */
+.nav-item:not(:last-child) {
+    margin-bottom: 10px; /* Space between each nav item */
+}
+
+/* Ensure minimized sidebar styles remain unchanged */
+.sidebar.minimized .nav-item {
+    justify-content: center; /* Center when minimized */
+}
+
+/* Minimized sidebar styles */
+.sidebar.minimized {
+    width: 50px; /* Set minimized width */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.sidebar.minimized .nav-text {
+    display: none; /* Hide text */
+}
+
+.sidebar .nav-item {
+    justify-content: left; /* Default justify */
+}
+
+.sidebar.minimized .nav-item {
+    justify-content: center; /* Center when minimized */
+}
+
+.sidebar .nav-label {
+    display: none; /* Hide labels when maximized */
+}
+
+.sidebar.minimized .nav-label {
+    display: inline; /* Show labels when minimized */
+}
+
+.sidebar.minimized .search-input {
+    display: none; /* Hide search input */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between elements */
+    margin-bottom: 20px; /* Space below header */
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size for back button */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size for menu button */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.menu {
+    position: absolute; /* Position it over the content */
+    top: 60px; /* Adjust position based on header height */
+    right: 20px; /* Align to the right */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+.menu ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 10px; /* Padding inside menu */
+    margin: 0; /* Remove margin */
+}
+
+.menu li {
+    padding: 5px 0; /* Padding for each item */
+}
+
+.menu a {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+}
+
+/* Show menu on button click */
+.menu.show {
+    display: block; /* Show menu when active */
+}
+
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1; /* Take remaining space */
+    padding: 20px;
+}
+
+.main-content h1 {
+    text-align: center; /* Center title */
+    font-size: 24px; /* Font size */
+    margin-bottom: 20px; /* Space below title */
+    color: #333; /* Title color */
+    letter-spacing: 10px; /* Adjust letter spacing */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align content horizontally */
+    margin-top: 20px; /* Space between heading and container */
+}
+
+
+/* Functional Button Section */
+.functional-button-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #003067;
+    border-radius: 8px;
+}
+
+.button-container .action-btn {
+    width: 120px;
+    height: 80px;
+    font-size: 14px;
+    color: white; /* Initial text color */
+    background-color: transparent; /* No fill color */
+    border: 2px solid white; /* White stroke */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Stack icon above text */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-container .action-btn i {
+    color: white; /* Initial icon color */
+    font-size: 24px; /* Icon size */
+}
+
+.button-container .action-btn:hover {
+    background-color: white; /* Fill color on hover */
+    color: #003067; /* Text color on hover */
+    border-color: #003067; /* Stroke color on hover */
+}
+
+.button-container .action-btn:hover i {
+    color: #003067; /* Icon color on hover */
+}
+
+/*Button design new, search and export*/
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+/* Base button styling */
+.action-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* New and Search button styling */
+.add-btn {
+    color: #003067;
+    background-color: none;
+    border: 2px solid #003067;
+}
+
+.add-btn:hover {
+    color: white;
+    background-color: #003067;
+    border-color: white;
+}
+
+/* Export button with red/orange theme */
+.export-btn {
+    color: white;
+    background-color: #FF5733; /* Red/orange color */
+    border: none;
+}
+
+.export-btn:hover {
+    background-color: #C4451C; /* Darker red/orange on hover */
+}
+
+/* Popup container styling */
+.export-popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #003067; /* Stroke color */
+    background-color: white; /* Fill color */
+    padding: 20px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Popup content header */
+.popup-content h3 {
+    color: #003067;
+    margin-bottom: 20px;
+}
+
+/* Popup button styling */
+.popup-btn {
+    color: #003067;
+    background-color: transparent;
+    border: 2px solid #003067;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.popup-btn:hover {
+    color: white;
+    background-color: #003067;
+    border-color: white;
+}
+
+/* Close button styling */
+.popup-close-btn {
+    background: none;
+    border: none;
+    color: #FF5733;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+/* Main Form Container Styling */
+.ticket-form-container {
+    position: relative;
+    width: 75%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Fieldset and Legend Styling */
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+legend {
+    font-weight: bold;
+    font-size: 16px;
+    color: #003067;
+}
+
+/* Input, Textarea, and Select Styling */
+.ticket-form-container input[type="text"],
+.ticket-form-container input[type="email"],
+.ticket-form-container input[type="password"],
+.ticket-form-container textarea,
+.ticket-form-container select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #003067;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+input::placeholder,
+textarea::placeholder {
+    color: #007bff;
+    opacity: 0.6;
+}
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+select {
+    appearance: none;
+    background-color: #f0f8ff;
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* Label Styling */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Personal Information Row Layout */
+.personal-info-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.personal-info-field {
+    flex: 1;
+}
+
+/* Support Details Section */
+.support-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Time In and Time Out Container */
+.time-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.time-container .time-field {
+    flex: 1;
+    max-width: 150px;
+}
+.time-container input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: #f0f8ff;
+    color: #333;
+    font-size: 16px;
+}
+.time-container input[type="datetime-local"]:focus {
+    border-color: #0056b3;
+}
+
+/* Additional Concern Container */
+#otherConcernContainer {
+    display: none;
+    background-color: #a7d4f7;
+    padding: 10px;
+    border: 1px solid #0056b3;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* Control Number Styling */
+.control-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+/* Heading for Technical Service Slip */
+.ticket-form-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #1165c6;
+    padding: 10px 20px;
+    background-color: #003067;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Form Actions */
+.form-actions,
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Button Styling */
+.submit-btn{
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s;
+    background-color: #007bff;
+}
+.submit-btn:hover {
+    background-color: #00214e;
+}
+
+/* Mobile view adjustments (max-width: 768px) */
+@media (max-width: 768px) {
+    .ticket-form-container, 
+    .ticket-form-container h2 {
+        width: 90%; /* Adjust the width for smaller screens */
+        padding: 15px; /* Consistent padding */
+    }
+    
+    .time-container {
+        flex-direction: column; /* Stack fields vertically */
+        align-items: center; /* Center-align the fields */
+    }
+
+    .time-container .time-field {
+        max-width: 100%; /* Full width for mobile */
+        margin-bottom: 15px; /* Space between stacked fields */
+    }
+
+    .button-container .action-btn {
+        width: 100%; /* Full width on mobile screens */
+        height: 50px; /* Adjust height for better fit */
+        font-size: 12px; /* Slightly smaller text */
+        gap: 8px; /* Space between icon and text */
+    }
+
+    .button-container .action-btn i,
+    .button-container .action-btn img.button-icon {
+        width: 16px; /* Reduce icon size */
+        height: 16px;
+    }
+}
+
+/* Very small screen adjustments (max-width: 480px) */
+@media (max-width: 480px) {
+    .ticket-form-container {
+        width: 95%; /* Further adjust width */
+        padding: 10px; /* Smaller padding */
+    }
+
+    .time-container .time-field {
+        margin-bottom: 10px; /* Reduced spacing */
+    }
+
+    .time-container input[type="datetime-local"] {
+        font-size: 14px; /* Smaller font for readability */
+        padding: 8px; /* Reduced padding */
+    }
+
+    .button-container .action-btn {
+        height: 45px; /* Reduced height */
+        gap: 10px; /* Increased gap for better spacing */
+    }
+
+    .button-container .action-btn i,
+    .button-container .action-btn img.button-icon {
+        width: 14px; /* Further reduced icon size */
+        height: 14px;
+    }
+}

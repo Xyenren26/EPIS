@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management Information System</title>
-    <link rel="stylesheet" href="css/ticketingstyle.css">
+    <link rel="stylesheet" href="css/Inventory/InInventorystyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -67,19 +67,31 @@
             </div>
         </div>
 
-
         <!-- Main content -->
         <div class="main-content">
             <div class="header">
             <button class="back-btn" onclick="goBack()">
                 <i class="fas fa-arrow-left"></i> 
             </button> <!-- Back button -->
-                <h1>TICKETING SYSTEM</h1>
+                <h1>MANAGEMENT INFORMATION SYSTEM</h1>
                 <button class="menu-btn" onclick="toggleMenu()">⋮</button> <!-- Three vertical dots -->
             </div>
+            
+            <!-- Menu (hidden by default) -->
+            <div class="menu" id="menu" style="display: none;">
+                <ul>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
+                </ul>
+            </div>
 
+             <!-- Hidden Logout Form -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </div>
     </div>
-    <script src="js/ticketingjavascript.js"></script>
+    <script src="js/Inventory/InInventoryjavascript.js"></script>
 </body>
 </html>
+

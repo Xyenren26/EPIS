@@ -5,13 +5,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    height: 100vh; /* Full height of the viewport */
 }
 
 /* Container for sidebar and main content */
 .container {
     display: flex;
-    height: 100%; /* Full height */
+    min-height: 100vh; /* Minimum height of the viewport, but will expand with content */
 }
 
 /* Sidebar styles */
@@ -22,9 +21,8 @@ body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
     display: flex;
     flex-direction: column; /* Arrange links vertically */
-    height: 100%; /* Full height */
-    transition: width 0.3s ease-in-out; /* Smooth transition */
     overflow: hidden; /* Prevent overflow of content */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
 }
 
 /* Minimize button styles */
