@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/inventory" class="nav-link">
+                    <a href="/in-inventory" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-boxes nav-logo"></i> <!-- Inventory icon -->
                             <span class="nav-label">INVENTORY</span> <!-- Inventory label -->

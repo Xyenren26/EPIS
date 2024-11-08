@@ -32,11 +32,11 @@ class SignupController extends Controller
         ], [
             'password.confirmed' => 'The password confirmation does not match.', // Custom error message
         ]);
-    
-        // Calculate Age from the provided BirthDate
-        $birthDate = Carbon::createFromFormat('m-d-y', $request->dob);
-        $age = Carbon::now()->diffInYears($birthDate);
-    
+
+        // Calculate the age from DOB
+        $dob = Carbon::parse($request->dob); // Parse the DOB
+        $age = $dob->diffInYears(Carbon::now()); // Calculate age in years
+
         // Create a new user account
         $account = new AccountTable();
         $account->username = $request->username;
@@ -46,21 +46,22 @@ class SignupController extends Controller
         $account->AccountType = $request->AccountType; // Adjusted to AccountType
         // Set the status to 'pending' if the role is Technical Administrator
         $account->Status = $request->AccountType === 'technical-administrator' ? 'pending' : 'active';
-    
+        $account->Status = in_array($request->AccountType, ['technical-support', 'employee']) ? 'active' : 'pending';
         $account->FirstName = $request->{'first-name'};
         $account->LastName = $request->{'last-name'};
         $account->Suffix = $request->suffix;
         $account->Address = $request->address;
         $account->BirthDate = $request->dob;
-        $account->Age = $age; // Assign calculated age
+        $account->Age = $age; // Store the computed age in the account
+
         $account->Password = Hash::make($request->password); // Hash the password before saving
-    
+
         // Save the account to the database
         $account->save();
-    
+
         // Redirect to the login page after successful signup
         return redirect()->route('login')->with('success', 'Account created successfully!'); // Assuming you named the login route 'login'
         // Redirect or show success message
         return redirect('/')->with('success', 'Registration successful. Awaiting admin approval.');
     }
-}    
+}

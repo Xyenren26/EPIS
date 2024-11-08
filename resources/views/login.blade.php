@@ -43,7 +43,7 @@
                 </div>
                 
                 <div class="remember-me" data-aos="fade-up">
-                    <input type="checkbox" name="remember" id="remember">
+                    <input type="checkbox" name="remember" id="remember" checked>
                     <label for="remember">Remember Me</label>
 
                     <a href="/forgotpassword" class="forgot-password">Forgot Password?</a>

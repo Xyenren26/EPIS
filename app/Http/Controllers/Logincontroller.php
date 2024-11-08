@@ -67,7 +67,12 @@ class LoginController extends Controller
                 $user->session_id = session()->getId();
                 $user->save();
 
-                return redirect()->route('home');
+                // Redirect based on account type
+                if ($user->AccountType === 'employee') {
+                    return redirect('/employee/home'); // Redirect employee to the client folder
+                } elseif (in_array($user->AccountType, ['technical-support', 'technical-administrator'])) {
+                    return redirect()->route('home'); // Redirect technical roles to main home
+                }
             }
         }
 

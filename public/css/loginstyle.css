@@ -214,35 +214,53 @@ input:focus {
     margin-bottom: 15px; /* Add some space below */
 }
 
-/* Checkbox specific styling */
+/* General styling for the checkbox */
 .remember-me input[type="checkbox"] {
-    width: auto; /* Set width to auto for the checkbox */
-    height: auto; /* Set height to auto for the checkbox */
-    margin: 1px; /* Reset margin */
-    padding: 10px; /* Reset padding */
-    border: none; /* Remove border */
+    width: 20px; /* Set width for the checkbox */
+    height: 20px; /* Set height for the checkbox */
+    margin: 2px; /* Reset margin */
+    padding: 0; /* Reset padding */
+    border: 2px solid #003067; /* Border color */
+    border-radius: 5px; /* Rounded corners */
     appearance: none; /* Remove default styling */
     -webkit-appearance: none; /* For Safari */
+    position: relative; /* For positioning the checkmark */
+    background-color: white; /* No background color */
 }
 
-/* Optional: Custom styles for checkbox when checked */
+/* Styling for the checkbox when it is checked */
 .remember-me input[type="checkbox"]:checked {
-    background-color: #003067; /* Change background color when checked */
-    border: 2px solid #003067; /* Optional border color */
-    border-radius: 5px; /* Rounded corners */
-    /* You can add more styles here */
+    background-color: transparent; /* No background color when checked */
 }
 
-/* Optional: Custom styles for the checkbox when not checked */
-.remember-me input[type="checkbox"]:not(:checked) {
-    background-color: white; /* Change background color when not checked */
-    border: 2px solid #003067; /* Optional border color */
-    border-radius: 5px; /* Rounded corners */
+/* Checkmark symbol when the checkbox is checked */
+.remember-me input[type="checkbox"]:checked::after {
+    content: '\2714'; /* Unicode checkmark symbol */
+    position: absolute;
+    top: 50%; /* Position from the top */
+    left: 50%; /* Position from the left */
+    transform: translate(-50%, -50%); /* Center the checkmark */
+    font-size: 16px; /* Size of the checkmark */
+    font-weight: bold; /* Make the checkmark bold */
+    color: #003067; /* Checkmark color */
+    text-align: center; /* Ensures it stays centered */
 }
 
+
+/* Optional: For unchecked state, no content */
+.remember-me input[type="checkbox"]:not(:checked)::after {
+    content: ''; /* No content when unchecked */
+}
+
+/* Label styling */
 .remember-me label {
-    margin-right: 50px; /* Space between label and "Forgot Password" link */
+    margin-left: 8px; /* Space between checkbox and label */
+    margin-right: 14px;
+    margin-top: 5px;
+    font-size: 15px; /* Font size for label */
+    color: #003067; /* Text color for label */
 }
+
 
 /* Form styling */
 form {

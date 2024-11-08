@@ -14,25 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Scroll position reset
     window.scrollTo(0, 0);
 
-    // Alert box for Sign Up
-    const signupForm = document.querySelector('.signup-container form');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
-            const username = document.getElementById('new-username').value;
-            const privacyCheckbox = document.getElementById('privacy-checkbox');
-
-            // Check if the privacy policy checkbox is checked
-            if (!privacyCheckbox.checked) {
-                alert("You must agree to the Privacy Policy to sign up.");
-            } else {
-                alert("Thank you for signing up, " + username + "!");
-                // Add actual form submission logic if needed.
-                signupForm.submit(); // Uncomment to submit the form.
-            }
-        });
-    }
-
     // Modal functionality
     const modal = document.getElementById("privacyPolicyModal");
     const link = document.getElementById("privacy-policy-link");
@@ -137,4 +118,23 @@ document.addEventListener('DOMContentLoaded', function () {
         // Scroll to the top of the page when the tab is clicked
         window.scrollTo(0, 0);
     };
+    
+     // Alert box for Sign Up
+     const signupForm = document.querySelector('.signup-container form');
+     if (signupForm) {
+         signupForm.addEventListener('submit', function (event) {
+             event.preventDefault(); // Prevent default form submission
+             const username = document.getElementById('new-username').value;
+             const privacyCheckbox = document.getElementById('privacy-checkbox');
+ 
+             // Check if the privacy policy checkbox is checked
+             if (!privacyCheckbox.checked) {
+                 alert("You must agree to the Privacy Policy to sign up.");
+             } else {
+                 alert("Thank you for signing up, " + username + "!");
+                 // Add actual form submission logic if needed.
+                 signupForm.submit(); // Uncomment to submit the form.
+             }
+         });
+     }
 });

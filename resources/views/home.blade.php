@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/inventory" class="nav-link">
+                    <a href="/in-inventory" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-boxes nav-logo"></i> <!-- Inventory icon -->
                             <span class="nav-label">INVENTORY</span> <!-- Inventory label -->
@@ -105,22 +105,7 @@
            <!-- Recent items section -->
             <div class="recent-items">
                 <h2 class="recent-title">Recent</h2> <!-- Add this line -->
-                <div class="recent-item">
-                    <img src="images/computer-screen-image.jpg" alt="Computer Screen">
-                    <div class="recent-item-details">
-                        <h3>Computer Screen</h3>
-                        <p>Date Appointed: September 02, 2024</p>
-                        <p>Details about the computer information</p>
-                    </div>
-                </div>
-                <div class="recent-item">
-                    <img src="images/processing-unit-image.jpg" alt="Processing Unit">
-                    <div class="recent-item-details">
-                        <h3>Processing Unit</h3>
-                        <p>Date Appointed: September 02, 2024</p>
-                        <p>Details about the processing unit information</p>
-                    </div>
-                </div>
+                
             </div>
 
 

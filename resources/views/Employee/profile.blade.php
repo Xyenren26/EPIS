@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Management Information System</title>
-    <link rel="stylesheet" href="css/profilestyle.css">
+    <link rel="stylesheet" href="../css/employee/profilestyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -21,48 +21,30 @@
             </div>
             <div class="nav-links">
                 <div class="nav-item">
-                    <a href="/home" class="nav-link">
+                    <a href="/employee/home" class="nav-link">
                         <div class="nav-logo-container">
-                            <i class="fas fa-home nav-logo"></i>
-                            <span class="nav-label">HOME</span>
+                            <i class="fas fa-home nav-logo"></i> <!-- Home icon -->
+                            <span class="nav-label">HOME</span> <!-- Home label -->
                         </div>
                         <span class="nav-text">HOME</span>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/in-inventory" class="nav-link">
+                    <a href="/employee/profile" class="nav-link">
                         <div class="nav-logo-container">
-                            <i class="fas fa-boxes nav-logo"></i>
-                            <span class="nav-label">INVENTORY</span>
-                        </div>
-                        <span class="nav-text">INVENTORY</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="/profile" class="nav-link">
-                        <div class="nav-logo-container">
-                            <i class="fas fa-user nav-logo"></i>
-                            <span class="nav-label">PROFILE</span>
+                            <i class="fas fa-user nav-logo"></i> <!-- Profile icon -->
+                            <span class="nav-label">PROFILE</span> <!-- Profile label -->
                         </div>
                         <span class="nav-text">PROFILE</span>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/contact" class="nav-link">
+                    <a href="/employee/contact" class="nav-link">
                         <div class="nav-logo-container">
-                            <i class="fas fa-envelope nav-logo"></i>
-                            <span class="nav-label">CONTACT</span>
+                            <i class="fas fa-envelope nav-logo"></i> <!-- Contact icon -->
+                            <span class="nav-label">CONTACT</span> <!-- Contact label -->
                         </div>
                         <span class="nav-text">CONTACT</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="/admin" class="nav-link">
-                        <div class="nav-logo-container">
-                            <i class="fas fa-cog nav-logo"></i>
-                            <span class="nav-label">ADMIN</span>
-                        </div>
-                        <span class="nav-text">ADMIN</span>
                     </a>
                 </div>
             </div>
@@ -88,7 +70,7 @@
             </div>
 
             <!-- Profile Information Section -->
-            <form id= "profile-form" action="{{ route('profile.update', $account->EmployeeID) }}" method="POST" enctype="multipart/form-data">
+            <form id= "profile-form" action="{{ route('employee.profile.update', $account->EmployeeID) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
                 <div class="profile-info-container">
@@ -210,7 +192,7 @@
             </div>
 
             <!-- Form for saving the image -->
-            <form id="imageUploadForm" action="{{ route('update.profile.picture') }}" method="POST" enctype="multipart/form-data">
+            <form id="imageUploadForm" action="{{ route('employee.update.profile.picture') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Hidden File Input for Image Selection -->
                 <input type="file" id="profile-image-input" name="profile_picture" style="display: none;" accept="image/*" onchange="previewImage(event)">
@@ -219,7 +201,7 @@
             <!-- Menu (hidden by default) -->
             <div class="menu" id="menu" style="display: none;">
                 <ul>
-                    <li><a href="/home">Home</a></li>
+                    <li><a href="/employee/home">Home</a></li>
                     <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
                 </ul>
             </div>
@@ -230,6 +212,6 @@
             </form>
         </div>
     </div>
-    <script src="js/profilejavascript.js"></script>
+    <script src="../js/employee/profilejavascript.js"></script>
 </body>
 </html>

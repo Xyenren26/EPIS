@@ -1,4 +1,4 @@
-/* homestyle.css */
+/* InInventorystyle.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -231,112 +231,55 @@ body {
     padding: 20px;
 }
 
-.main-content h1 {
-    text-align: center; /* Center title */
-    font-size: 24px; /* Font size */
-    margin-bottom: 20px; /* Space below title */
-    color: #333; /* Title color */
-    letter-spacing: 10px; /* Adjust letter spacing */
-}
-
-.image-container {
-    position: relative; /* Position relative for overlay */
-    height: 33vh; /* One-third of the viewport height */
-    overflow: hidden; /* Hide overflow */
-}
-
-.city-hall-image {
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    object-fit: cover; /* Cover the container without distortion */
-}
-
-.image-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 38, 104, 0.5); /* Overlay with color #003067 and transparency */
-    z-index: 1; /* Ensure it is above the image */
-}
-
-.overlay-title {
-    position: absolute;
-    bottom: 10px; /* Position it towards the bottom */
-    left: 20px; /* Align to the left */
-    color: white; /* White text color */
-    z-index: 2; /* Ensure it is above the overlay */
-    font-size: 60px; /* Larger font size for main title */
-    font-weight: bold; /* Bold text */
-}
-
-.subtitle {
-    display: block; /* Make it a block element to appear on a new line */
-    font-size: 40px; /* Smaller font size for subtitle */
-    font-weight: normal; /* Normal weight for subtitle */
-}
-
-.buttons {
-    margin-top: 20px;
+/* Inventory Navigation Tabs */
+.inventory-nav {
     display: flex;
-    gap: 10px; /* Space between buttons */
-    justify-content: center; /* Center the buttons */
-}
-a {
-    text-decoration: none; /* Removes underline from links */
-}
-
-.icon-button {
-    padding: 10px 20px;
-    border: 2px solid #003067; /* Stroke color */
-    background-color: transparent; /* No fill color */
-    color: #003067; /* Text color */
-    border-radius: 5px; /* Rounded corners */
-    display: flex; /* Flex to align icon and text */
-    align-items: center; /* Center vertically */
-    gap: 5px; /* Space between icon and text */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-}
-
-.icon-button:hover {
-    background-color: #003067; /* Fill color on hover */
-    color: white; /* Text color on hover */
-}
-
-.icon-button i {
-    color: #003067; /* Icon color */
-    transition: color 0.3s ease; /* Smooth transition for icon color */
-}
-
-.icon-button:hover i {
-    color: white; /* Icon color on hover */
-}
-
-/* Recent items */
-.recent-item {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between;
     align-items: center;
-    background-color: transparent; /* No fill color */
-    padding: 10px; /* Padding around item */
-    margin: 10px 0; /* Space between items, top and bottom */
-    border: 1px solid #003067; /* Stroke color */
-    border-radius: 8px; /* Smooth corners */
-    width: 100%; /* Full width */
-    box-shadow: none; /* Remove shadow */
-    margin: 0 10px; /* Add margin to the right and left */
+    padding: 10px 0;
+    border-bottom: 2px solid #ccc; /* Optional separator */
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 50px; /* Smaller width for mobile */
-    }
+.inventory-tab {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
 
-    .main-content {
-        margin-left: 60px; /* Adjust for smaller sidebar */
-    }
+.inventory-tab:hover,
+.inventory-tab.active {
+    color: #003067;
+}
+
+/* Action Buttons and Logo */
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-btn {
+    border: 2px solid #003067;
+    background-color: transparent;
+    color: #003067;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background-color: #003067;
+    color: #ffffff;
+    border: none;
+}
+
+.pasig-logo {
+    width: 180px; /* Increase logo size slightly */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 20px; /* Add space between logo and the edge */
+    margin-right: 20px; /* Add space on the right side of the logo */
 }

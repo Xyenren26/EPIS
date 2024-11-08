@@ -71,8 +71,8 @@
         <div class="main-content">
             <!-- Inventory Navigation Tabs -->
             <div class="inventory-nav">
-                <a href="/in-inventory" class="inventory-tab active">IN INVENTORY</a>
-                <a href="/out-inventory" class="inventory-tab">OUT INVENTORY</a>
+                <a href="/in-inventory" class="inventory-tab">IN INVENTORY</a>
+                <a href="/out-inventory" class="inventory-tab active">OUT INVENTORY</a>
                 <a href="/deployment" class="inventory-tab">DEPLOYMENT</a>
                 <a href="/all-inventory" class="inventory-tab">ALL</a>
 

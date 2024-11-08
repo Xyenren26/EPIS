@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
 
+use App\Http\Controllers\Controller; 
 use App\Models\AccountTable; // Import the AccountTable model
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class EmployeeProfileController extends Controller
 {
-    public function showProfile()
+    public function showEmployeeProfile()
     {
         // Retrieve the user ID from the session
         $userId = session('user_id');
@@ -22,10 +23,10 @@ class ProfileController extends Controller
         }
 
         // Pass the account data to the profile Blade view
-        return view('profile', ['account' => $account]);
+        return view('employee.profile', ['account' => $account]);
     }
 
-    public function update(Request $request, $employeeID)
+    public function EmployeeUpdate(Request $request, $employeeID)
     {
         // Validate the form inputs
         $request->validate([
@@ -64,10 +65,10 @@ class ProfileController extends Controller
         // Save the updated account data
         $account->save();
 
-        return redirect()->route('profile.show')->with('success', 'Profile updated successfully!');
+        return redirect()->route('employee.profile.show')->with('success', 'Profile updated successfully!');
     }
 
-    public function updateProfilePicture(Request $request)
+    public function EmployeeUpdateProfilePicture(Request $request)
     {
         // Get the logged-in user's account
         $account = AccountTable::find(session('user_id'));
@@ -83,10 +84,10 @@ class ProfileController extends Controller
             $account->save();
 
             // Redirect back to the profile page with a success message
-            return redirect()->route('profile.show')->with('success', 'Profile picture updated successfully!');
+            return redirect()->route('employee.profile.show')->with('success', 'Profile picture updated successfully!');
         }
 
         // Redirect back with an error message if no valid file is uploaded
-        return redirect()->route('profile.show')->with('error', 'Failed to upload profile picture. Please try again.');
+        return redirect()->route('employee.profile.show')->with('error', 'Failed to upload profile picture. Please try again.');
     }
 }
