@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management Information System</title>
-    <link rel="stylesheet" href="css/homestyle.css">
+    <link rel="stylesheet" href="../css/ticketing/taskstyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -67,52 +67,62 @@
             </div>
         </div>
 
-
         <!-- Main content -->
         <div class="main-content">
             <div class="header">
-            <button class="back-btn" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i> 
-            </button> <!-- Back button -->
-                <h1>MANAGEMENT INFORMATION SYSTEM</h1>
+                <button class="back-btn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> 
+                </button> <!-- Back button -->
+                <h1>TASK MANAGEMENT</h1>
                 <button class="menu-btn" onclick="toggleMenu()">⋮</button> <!-- Three vertical dots -->
             </div>
-            <div class="image-container">
-                <img src="images/city-hall-image.jpg" alt="City Hall" class="city-hall-image" id="cityHallImage">
-                <h2 class="overlay-title">
-                    PASIG CITY<br>
-                    <span class="subtitle">INVENTORY SYSTEM</span>
-                </h2>
-            </div>
 
-            <div class="buttons">
-                <button class="icon-button">
-                    <i class="fas fa-tasks"></i> <!-- Task icon -->
-                    Monitoring
-                </button>
-                <a href="/ticketing/ticketing">
-                    <button class="icon-button">
-                        <i class="fas fa-ticket-alt"></i> <!-- Ticket icon -->
-                        Ticketing
+            <!-- Functional Button Section -->
+            <div class="functional-button-section">
+                <div class="button-container">
+                    <button class="action-btn" onclick="window.location.href='Report and Monitoring.html';">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>REPORT AND MONITORING</span>
                     </button>
-                </a>
-                <a href="/ticketing/task">
-                    <button class="icon-button task-btn">
-                        <i class="fas fa-check-circle"></i> <!-- Monitoring icon -->
-                        Task
-                        @if ($pendingTasksCount > 0)
-                            <span class="notification-badge">{{ $pendingTasksCount }}</span> <!-- Notification Badge -->
-                        @endif
-                    </button>
-                </a>
+                    <a href="/ticketing/ticketing">
+                        <button class="action-btn">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span>TICKETING</span>
+                        </button>
+                    </a>
+                    <a href="/task">
+                        <button class="action-btn">
+                            <i class="fas fa-bell"></i>
+                            <span>TASK</span>
+                        </button>
+                    </a>
+                </div>
             </div>
 
-           <!-- Recent items section -->
-            <div class="recent-items">
-                <h2 class="recent-title">Recent</h2> <!-- Add this line -->
-                
-            </div>
+            <!-- Task Details Section -->
+            <div class="task-details">
+                @forelse ($tickets as $ticket)
+                    <div class="task-card">
+                        <h3>#{{ $ticket->control_no }}</h3>
+                        <div class="task-info">
+                            <p><strong>Time In:</strong> {{ $ticket->TimeIn }}</p>
+                            <p><strong>Department:</strong> {{ $ticket->Department }}</p>
+                        </div>
 
+                        <!-- Action Buttons - Positioned on the Right but Aligned with Content -->
+                        <div class="action-buttons">
+                            <button class="chat-btn">
+                                <i class="fa fa-comments"></i> Chat
+                            </button>
+                            <button class="remarks-btn">
+                                <i class="fa fa-pencil-alt"></i> Remarks
+                            </button>
+                        </div>
+                    </div>
+                @empty
+                <p class="empty-message">No tasks assigned to you at this time.</p>
+                @endforelse
+            </div>
 
             <!-- Menu (hidden by default) -->
             <div class="menu" id="menu" style="display: none;">
@@ -122,12 +132,12 @@
                 </ul>
             </div>
 
-             <!-- Hidden Logout Form -->
+            <!-- Hidden Logout Form -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
         </div>
     </div>
-    <script src="js/homejavascript.js"></script>
+    <script src="../js/ticketing/taskjavascript.js"></script>
 </body>
 </html>

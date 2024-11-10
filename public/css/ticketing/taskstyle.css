@@ -1,4 +1,4 @@
-/* homestyle.css */
+/* taskstyle.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -239,14 +239,6 @@ body {
     letter-spacing: 10px; /* Adjust letter spacing */
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center-align content horizontally */
-    margin-top: 20px; /* Space between heading and container */
-}
-
-
 /* Functional Button Section */
 .functional-button-section {
     text-align: center;
@@ -300,325 +292,122 @@ a{
     color: #003067; /* Icon color on hover */
 }
 
-/*Button design new, search and export*/
-.form-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
-    padding: 10px;
-}
-
-/* Base button styling */
-.action-btn {
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* New and Search button styling */
-.add-btn {
-    color: #003067;
-    background-color: none;
-    border: 2px solid #003067;
-}
-
-.add-btn:hover {
-    color: white;
-    background-color: #003067;
-    border-color: white;
-}
-
-/* Export button with red/orange theme */
-.export-btn {
-    color: white;
-    background-color: #FF5733; /* Red/orange color */
-    border: none;
-}
-
-.export-btn:hover {
-    background-color: #C4451C; /* Darker red/orange on hover */
-}
-
-/* Popup container styling */
-.export-popup {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid #003067; /* Stroke color */
-    background-color: white; /* Fill color */
-    padding: 20px;
-    width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    z-index: 1000;
-}
-
-/* Popup content header */
-.popup-content h3 {
-    color: #003067;
-    margin-bottom: 20px;
-}
-
-/* Popup button styling */
-.popup-btn {
-    color: #003067;
-    background-color: transparent;
-    border: 2px solid #003067;
-    padding: 8px 16px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    margin-top: 10px;
-    width: 100%;
-}
-
-.popup-btn:hover {
-    color: white;
-    background-color: #003067;
-    border-color: white;
-}
-
-/* Close button styling */
-.popup-close-btn {
-    background: none;
-    border: none;
-    color: #FF5733;
-    font-size: 14px;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-
-/* Main Form Container Styling */
-.ticket-form-container {
-    position: relative;
-    width: 75%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Fieldset and Legend Styling */
-fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-legend {
-    font-weight: bold;
-    font-size: 16px;
-    color: #003067;
-}
-
-/* Input, Textarea, and Select Styling */
-.ticket-form-container input[type="text"],
-.ticket-form-container input[type="email"],
-.ticket-form-container input[type="password"],
-.ticket-form-container textarea,
-.ticket-form-container select {
-    width: 100%;
-    padding: 8px;
-    border: 2px solid #003067;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-input::placeholder,
-textarea::placeholder {
-    color: #007bff;
-    opacity: 0.6;
-}
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #0056b3;
-    outline: none;
-}
-textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-select {
-    appearance: none;
-    background-color: #f0f8ff;
-    color: #007bff;
-    cursor: pointer;
-}
-
-/* Label Styling */
-label {
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Personal Information Row Layout */
-.personal-info-container {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-.personal-info-field {
-    flex: 1;
-}
-
-/* Support Details Section */
-.support-details-container {
+/* Task Details Section */
+.task-details {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 20px;
 }
 
-/* Time In and Time Out Container */
-.time-container {
+/* Task Card Styling */
+.task-card {
+    background-color: white;
+    border: 2px solid #003067; /* Stroke color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-.time-container .time-field {
-    flex: 1;
-    max-width: 150px;
-}
-.time-container input[type="datetime-local"] {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    background-color: #f0f8ff;
-    color: #333;
-    font-size: 16px;
-}
-.time-container input[type="datetime-local"]:focus {
-    border-color: #0056b3;
+    flex-direction: column;
+    position: relative; /* Needed to position buttons within the task card */
 }
 
-/* Additional Concern Container */
-#otherConcernContainer {
-    display: none;
-    background-color: #a7d4f7;
-    padding: 10px;
-    border: 1px solid #0056b3;
-    border-radius: 5px;
-    margin-bottom: 5px;
+/* Task Info Section (Time In and Department) */
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Control Number Styling */
-.control-number {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    font-weight: bold;
+.task-card h3 {
     color: red;
+    text-transform: uppercase; /* Makes "Task for Ticket" capitalized */
+    margin-bottom: 10px;
+    font-size: 1.25rem; /* Adjust size if necessary */
 }
 
-/* Heading for Technical Service Slip */
-.ticket-form-container h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
+.task-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+    text-transform: capitalize; /* Capitalizes each word in the paragraph */
+}
+
+.task-card strong {
+    text-transform: uppercase; /* Capitalizes the label like "Time In" */
     font-weight: bold;
-    border-bottom: 2px solid #1165c6;
+}
+
+.task-card p strong {
+    font-weight: normal; /* Ensure the paragraph text weight is normal for strong tags inside paragraphs */
+}
+
+.task-details p {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Empty Message Styling */
+.empty-message {
+    font-style: italic;
+    color: #999;
+    text-align: center; /* Center the text horizontally */
+    font-size: 18px; /* Adjust font size */
+}
+
+/* Action Buttons Section */
+.action-buttons {
+    position: absolute;
+    right: 20px; /* Pushes buttons to the right */
+    top: 50%; /* Align vertically in the center */
+    transform: translateY(-50%); /* Adjust to center vertically */
+    display: flex;
+    gap: 15px;
+}
+
+/* Common Button Styles */
+.action-buttons button {
+    border: 2px solid #003067; /* Stroke color */
+    background-color: transparent;
+    color: #003067;
     padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Button Icon */
+.action-buttons button i {
+    font-size: 16px; /* Adjust size if necessary */
+}
+
+/* Hover Effects for Buttons */
+.action-buttons button:hover {
     background-color: #003067;
     color: white;
-    border-radius: 8px;
-    text-align: center;
+    border: 2px solid transparent; /* No stroke on hover */
 }
 
-/* Form Actions */
-.form-actions,
-.form-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+.action-buttons button:hover i {
+    color: white; /* Change icon color on hover */
 }
 
-/* Button Styling */
-.submit-btn{
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-    transition: background-color 0.3s;
-    background-color: #007bff;
-}
-.submit-btn:hover {
-    background-color: #00214e;
+/* Optional: Additional button focus styles */
+.action-buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 48, 103, 0.5); /* Optional focus outline */
 }
 
-/* Mobile view adjustments (max-width: 768px) */
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
-    .ticket-form-container, 
-    .ticket-form-container h2 {
-        width: 90%; /* Adjust the width for smaller screens */
-        padding: 15px; /* Consistent padding */
-    }
-    
-    .time-container {
-        flex-direction: column; /* Stack fields vertically */
-        align-items: center; /* Center-align the fields */
+    .sidebar {
+        width: 50px; /* Smaller width for mobile */
     }
 
-    .time-container .time-field {
-        max-width: 100%; /* Full width for mobile */
-        margin-bottom: 15px; /* Space between stacked fields */
-    }
-
-    .button-container .action-btn {
-        width: 100%; /* Full width on mobile screens */
-        height: 50px; /* Adjust height for better fit */
-        font-size: 12px; /* Slightly smaller text */
-        gap: 8px; /* Space between icon and text */
-    }
-
-    .button-container .action-btn i,
-    .button-container .action-btn img.button-icon {
-        width: 16px; /* Reduce icon size */
-        height: 16px;
-    }
-}
-
-/* Very small screen adjustments (max-width: 480px) */
-@media (max-width: 480px) {
-    .ticket-form-container {
-        width: 95%; /* Further adjust width */
-        padding: 10px; /* Smaller padding */
-    }
-
-    .time-container .time-field {
-        margin-bottom: 10px; /* Reduced spacing */
-    }
-
-    .time-container input[type="datetime-local"] {
-        font-size: 14px; /* Smaller font for readability */
-        padding: 8px; /* Reduced padding */
-    }
-
-    .button-container .action-btn {
-        height: 45px; /* Reduced height */
-        gap: 10px; /* Increased gap for better spacing */
-    }
-
-    .button-container .action-btn i,
-    .button-container .action-btn img.button-icon {
-        width: 14px; /* Further reduced icon size */
-        height: 14px;
+    .main-content {
+        margin-left: 60px; /* Adjust for smaller sidebar */
     }
 }

@@ -26,7 +26,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./picture/pasigbg.jpg'); /* Relative path */
+    background-image: url('../images/loginImages/pasigbg.jpg'); /* Relative path */
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.3; /* Adjust the opacity value here */

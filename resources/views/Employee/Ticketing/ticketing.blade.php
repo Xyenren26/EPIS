@@ -83,8 +83,8 @@
             <div class="content-wrapper">
                 <div class="ticket-form-container">
                     <h2>Technical Service Slip</h2> <!-- New heading added here -->
-                    <div class="control-number" id="controlNumber">TS-2024-0001</div>
-                    <form id="ticketForm" action="/ticket" method="POST">
+                    <div class="control-number" id="controlNumber">{{ $nextControlNo }}</div>
+                    <form id="ticketForm" action="/employee/ticket" method="POST">
                         @csrf
                         <!-- Row 1: Personal Information -->
                         <fieldset>
@@ -118,10 +118,10 @@
                                 <label for="concern">Concern/Problem:</label>
                                 <select id="concern" name="concern" required onchange="toggleOtherInput()">
                                     <option value="" disabled selected>Select Concern</option>
-                                    <option value="hardware">Hardware Issue</option>
-                                    <option value="software">Software Issue</option>
+                                    <option value="Hardware Issue">Hardware Issue</option>
+                                    <option value="Software Issue">Software Issue</option>
                                     <option value="file-transfer">File Transfer</option>
-                                    <option value="network">Network Connectivity</option>
+                                    <option value="Network Connectivity">Network Connectivity</option>
                                     <option value="other">Other: Specify</option>
                                 </select>
 
@@ -137,7 +137,7 @@
 
                          <!-- Row 3: Support Details -->
                         <fieldset>
-                        <legend>Support Details</legend>
+                            <legend>Support Details</legend>
                             <div class="support-details-container">
                                 <div class="support-details-field">
                                     <label for="technicalSupport">Technical Support By:</label>

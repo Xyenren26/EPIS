@@ -86,14 +86,18 @@
                         <i class="fas fa-chart-bar"></i>
                         <span>REPORT AND MONITORING</span>
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-ticket-alt"></i>
-                        <span>TICKETING</span>
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-bell"></i>
-                        <span>NOTICE</span>
-                    </button>
+                    <a href="/ticketing/ticketing">
+                        <button class="action-btn">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span>TICKETING</span>
+                        </button>
+                    </a>
+                    <a href="/ticketing/task">
+                        <button class="action-btn">
+                            <i class="fas fa-bell"></i>
+                            <span>TASK</span>
+                        </button>
+                    </a>
                 </div>
             </div>
 

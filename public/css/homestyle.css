@@ -278,42 +278,78 @@ body {
     font-weight: normal; /* Normal weight for subtitle */
 }
 
+/* Button container styling */
 .buttons {
     margin-top: 20px;
     display: flex;
     gap: 10px; /* Space between buttons */
     justify-content: center; /* Center the buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
+
+/* Link styling (to remove underline) */
 a {
     text-decoration: none; /* Removes underline from links */
 }
-
+/* Icon button styling */
 .icon-button {
-    padding: 10px 20px;
+    position: relative; /* Needed for positioning the notification badge */
+    padding: 12px 24px; /* Slightly larger padding for better touch targets */
     border: 2px solid #003067; /* Stroke color */
     background-color: transparent; /* No fill color */
     color: #003067; /* Text color */
     border-radius: 5px; /* Rounded corners */
     display: flex; /* Flex to align icon and text */
     align-items: center; /* Center vertically */
-    gap: 5px; /* Space between icon and text */
+    gap: 8px; /* Space between icon and text */
     cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Added transition for transform */
+    font-size: 14px; /* Default font size for readability */
+    text-transform: capitalize; /* Ensures the text is capitalized */
 }
 
+/* Icon button hover effect */
 .icon-button:hover {
     background-color: #003067; /* Fill color on hover */
     color: white; /* Text color on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
 }
 
+/* Icon color and transition */
 .icon-button i {
     color: #003067; /* Icon color */
     transition: color 0.3s ease; /* Smooth transition for icon color */
 }
 
+/* Icon color on hover */
 .icon-button:hover i {
     color: white; /* Icon color on hover */
 }
+
+/* Notification Badge */
+.icon-button .notification-badge {
+    position: absolute; /* Position the badge relative to the button */
+    top: -5px; /* Adjust the top position */
+    right: -5px; /* Adjust the right position */
+    background-color: #ff3b30; /* Red color for notification */
+    color: white; /* Text color for the badge */
+    font-size: 12px; /* Smaller font size for the badge */
+    width: 18px; /* Width of the badge */
+    height: 18px; /* Height of the badge */
+    border-radius: 50%; /* Make it a circle */
+    display: flex; /* Flexbox for centering the content */
+    justify-content: center; /* Horizontally center the number */
+    align-items: center; /* Vertically center the number */
+    font-weight: bold; /* Bold font for emphasis */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Optional: shadow to make the badge stand out */
+}
+
+/* Show the notification badge only when there are notifications */
+.icon-button .notification-badge.hidden {
+    display: none; /* Hide the badge if the count is 0 or if you don't want to display it */
+}
+
+
 
 /* Recent items */
 .recent-item {
