@@ -5,44 +5,58 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller; 
 use App\Models\TicketingTable;
 use App\Models\AccountTable;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EmployeeTicketController extends Controller
 {
     public function showTicketing()
-{
-    // Fetch available technical support staff who have a Time_in value set (not null)
-    $techSupport = AccountTable::where('AccountType', 'technical-support')
-                               ->whereNotNull('time_in')  // Check if 'time_in' is not null
-                               ->get();
+    {
+        // Fetch technical support staff who are clocked in and not on break
+        $unselectedTechSupport = AccountTable::where('AccountType', 'technical-support')
+                                            ->whereNotNull('time_in') // Available based on time_in
+                                            ->where('on_break', false) // Not on break
+                                            ->where('is_selected', false) // Not yet selected
+                                            ->get();
 
-    // Check if there are available technical support staff
-    if ($techSupport->isEmpty()) {
-        $noTechMessage = '';  // Set the message if no tech support is available
-    } else {
-        $noTechMessage = null;  // No message if there is tech support available
+        // Check if no technical support is available
+        if ($unselectedTechSupport->isEmpty()) {
+            // If all tech support staff have been selected, reset `is_selected` for everyone
+            AccountTable::where('AccountType', 'technical-support')->update(['is_selected' => false]);
+
+            // Re-fetch unselected tech support after reset
+            $unselectedTechSupport = AccountTable::where('AccountType', 'technical-support')
+                                                ->whereNotNull('time_in')
+                                                ->where('on_break', false)
+                                                ->where('is_selected', false)
+                                                ->get();
+        }
+
+        // Set a flag if no support is available even after reset
+        $noSupportAvailable = $unselectedTechSupport->isEmpty();
+
+        // Select a tech support if available
+        $selectedTechSupport = null;
+        if (!$noSupportAvailable) {
+            $selectedTechSupport = $unselectedTechSupport->random();
+            $selectedTechSupport->is_selected = true;
+            $selectedTechSupport->save();
+        }
+
+        // Generate the next control number
+        $prefix = 'TS-' . Carbon::now()->year . '-';
+        $lastControlNo = TicketingTable::where('control_no', 'LIKE', "{$prefix}%")
+                                    ->orderBy('control_no', 'desc')
+                                    ->first();
+
+        // Determine the next control number
+        $lastNumber = $lastControlNo ? (int)substr($lastControlNo->control_no, -4) : 0;
+        $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+        $nextControlNo = $prefix . $newNumber;
+
+        // Pass tech support data, control number, and no-support flag to the view
+        return view('employee.ticketing.ticketing', compact('selectedTechSupport', 'nextControlNo', 'noSupportAvailable'));
     }
-
-    // Generate the next control number
-    $prefix = 'TS-' . Carbon::now()->year . '-';
-    $lastControlNo = TicketingTable::where('control_no', 'LIKE', "{$prefix}%")
-                                   ->orderBy('control_no', 'desc')
-                                   ->first();
-
-    // Determine the next control number
-    $lastNumber = $lastControlNo ? (int)substr($lastControlNo->control_no, -4) : 0;
-    $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
-    $nextControlNo = $prefix . $newNumber;
-
-    // Pass the tech support data and the next control number to the view
-    return view('employee.ticketing.ticketing', [
-        'techSupport' => $techSupport,
-        'nextControlNo' => $nextControlNo,
-        'noTechMessage' => $noTechMessage,  // Always pass the noTechMessage
-    ]);
-}
-
 
     public function storeTicket(Request $request)
     {
@@ -53,38 +67,23 @@ class EmployeeTicketController extends Controller
             'department' => 'required|string',
             'concern' => 'required|string',
             'employeeId' => 'required|string',
+            'technicalSupport' => 'required|string',
             'timeIn' => 'required|date',
             'timeOut' => 'nullable|date',
+            'otherConcern' => 'nullable|string',
         ]);
 
-        // Fetch available technical support staff who have a Time_in value set (not null)
-        $techSupport = AccountTable::where('AccountType', 'technical-support')
-                                   ->whereNotNull('time_in')  // Check if 'time_in' is not null
-                                   ->get();
-
-        // Check if there are available technical support staff
-        if ($techSupport->isEmpty()) {
-            return redirect()->route('employee.ticketing.ticketing')->with('error', 'No available tech-support at the moment.');
-        }
-
-        // Round-robin selection of tech support
-        $techSupportCount = $techSupport->count();
-        $lastAssignedTech = session('last_assigned_tech', -1); // Keep track of last assigned tech
-
-        // Get the next tech to assign based on round-robin
-        $nextTechIndex = ($lastAssignedTech + 1) % $techSupportCount;
-        $selectedTech = $techSupport[$nextTechIndex];
-
-        // Store the selected tech in session for next round
-        session(['last_assigned_tech' => $nextTechIndex]);
+        // Use the 'otherConcern' value if 'concern' is "other"
+        $concern = $validated['concern'] === 'other' && !empty($validated['otherConcern']) 
+            ? $validated['otherConcern'] 
+            : $validated['concern'];
 
         // Generate the next control number
         $prefix = 'TS-' . Carbon::now()->year . '-';
         $lastControlNo = TicketingTable::where('control_no', 'LIKE', "{$prefix}%")
                                        ->orderBy('control_no', 'desc')
                                        ->first();
-        
-        // Determine the next control number
+
         $lastNumber = $lastControlNo ? (int)substr($lastControlNo->control_no, -4) : 0;
         $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
         $nextControlNo = $prefix . $newNumber;
@@ -92,14 +91,15 @@ class EmployeeTicketController extends Controller
         // Save the ticket to the ticketing table with the generated control number
         TicketingTable::create([
             'control_no' => $nextControlNo,
-            'FirstName' => $validated['first-name'],
-            'LastName' => $validated['last-name'],
+            'fname' => $validated['first-name'],
+            'lname' => $validated['last-name'],
             'Department' => $validated['department'],
-            'Concern' => $validated['concern'],
+            'Concern' => $concern,
             'EmployeeID' => $validated['employeeId'],
-            'TechnicalSupportID' => $selectedTech->EmployeeID,
+            'Technical_Supported' => $validated['technicalSupport'],
             'TimeIn' => $validated['timeIn'],
             'TimeOut' => $validated['timeOut'],
+            'status' => 'pending',
         ]);
 
         return redirect()->route('employee.ticketing.ticketing')->with('success', 'Ticket has been submitted.');

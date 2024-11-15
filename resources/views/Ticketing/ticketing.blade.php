@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/inventory" class="nav-link">
+                    <a href="/in-inventory" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-boxes nav-logo"></i>
                             <span class="nav-label">INVENTORY</span>
@@ -82,10 +82,12 @@
             <!-- Functional Button Section -->
             <div class="functional-button-section">
                 <div class="button-container">
-                    <button class="action-btn" onclick="window.location.href='Report and Monitoring.html';">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>REPORT AND MONITORING</span>
-                    </button>
+                    <a href="/report_and_monitoring">
+                        <button class="action-btn">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>REPORT AND MONITORING</span>
+                        </button>
+                    </a>
                     <a href="/ticketing/ticketing">
                         <button class="action-btn">
                             <i class="fas fa-ticket-alt"></i>
@@ -173,7 +175,7 @@
                                 <div class="support-details-field">
                                     <label for="technicalSupport">Technical Support By:</label>
                                     <select id="technicalSupport" name="technicalSupport" required>
-                                        <option value="" disabled selected>Select Technical Support</option>
+                                        <option value="" disabled selected>Generate Technical Support</option>
                                         <!-- Loop through techSupport and populate the dropdown -->
                                         @foreach($techSupport as $support)
                                             <option value="{{ $support->EmployeeID }}">{{ $support->FirstName }} {{ $support->LastName }}</option>

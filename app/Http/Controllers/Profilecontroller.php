@@ -3,22 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\AccountTable; // Import the AccountTable model
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
     public function showProfile()
     {
-        // Retrieve the user ID from the session
-        $userId = session('user_id');
+        // Retrieve the authenticated user
+        $account = Auth::user();
 
-        // Fetch the account associated with the current user ID
-        $account = AccountTable::where('EmployeeID', $userId)->first();
-
-        // Check if the account exists
+        // Check if the user is authenticated
         if (!$account) {
-            // Handle the case where the account is not found (e.g., redirect or show an error)
-            return redirect()->route('login')->withErrors(['login' => 'Account not found.']);
+            // Redirect to login if no authenticated user is found
+            return redirect()->route('login')->withErrors(['login' => 'Please log in again.']);
         }
 
         // Pass the account data to the profile Blade view

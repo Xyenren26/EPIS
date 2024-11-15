@@ -73,8 +73,9 @@ class TicketController extends Controller
         'Technical_Supported' => $validated['technicalSupport'],
         'TimeIn' => $validated['timeIn'],
         'TimeOut' => $validated['timeOut'],
+        'status' => 'pending',
     ]);
 
-    return redirect()->route('employee.ticketing.ticketing')->with('success', 'Ticket has been submitted.');
+    return redirect()->route('ticketing.ticketing')->with('success', 'Ticket has been submitted.');
 }
 }

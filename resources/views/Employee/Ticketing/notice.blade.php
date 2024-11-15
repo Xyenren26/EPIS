@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management Information System</title>
-    <link rel="stylesheet" href="../css/ticketing/taskstyle.css">
+    <link rel="stylesheet" href="{{ asset('css/Employee/ticketing/noticestyle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar minimized">
             <div class="sidebar-header">
-                <button class="minimize-btn" onclick="toggleSidebar()"></button> <!-- Hamburger icon for minimize button -->
+                <button class="minimize-btn" onclick="toggleSidebar()"></button>
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
+                <button class="search-btn">🔍</button>
             </div>
             <div class="nav-links">
                 <div class="nav-item">
-                    <a href="/home" class="nav-link">
+                    <a href="/employee/home" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-home nav-logo"></i> <!-- Home icon -->
                             <span class="nav-label">HOME</span> <!-- Home label -->
@@ -29,16 +31,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/in-inventory" class="nav-link">
-                        <div class="nav-logo-container">
-                            <i class="fas fa-boxes nav-logo"></i> <!-- Inventory icon -->
-                            <span class="nav-label">INVENTORY</span> <!-- Inventory label -->
-                        </div>
-                        <span class="nav-text">INVENTORY</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="/profile" class="nav-link">
+                    <a href="/employee/profile" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-user nav-logo"></i> <!-- Profile icon -->
                             <span class="nav-label">PROFILE</span> <!-- Profile label -->
@@ -47,21 +40,12 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/contact" class="nav-link">
+                    <a href="/employee/contact" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-envelope nav-logo"></i> <!-- Contact icon -->
                             <span class="nav-label">CONTACT</span> <!-- Contact label -->
                         </div>
                         <span class="nav-text">CONTACT</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="/admin" class="nav-link">
-                        <div class="nav-logo-container">
-                            <i class="fas fa-cog nav-logo"></i> <!-- Admin icon -->
-                            <span class="nav-label">ADMIN</span> <!-- Admin label -->
-                        </div>
-                        <span class="nav-text">ADMIN</span>
                     </a>
                 </div>
             </div>
@@ -72,41 +56,39 @@
             <div class="header">
                 <button class="back-btn" onclick="goBack()">
                     <i class="fas fa-arrow-left"></i> 
-                </button> <!-- Back button -->
-                <h1>TASK MANAGEMENT</h1>
-                <button class="menu-btn" onclick="toggleMenu()">⋮</button> <!-- Three vertical dots -->
+                </button>
+                <h1>TICKETING SYSTEM</h1>
+                <button class="menu-btn" onclick="toggleMenu()">⋮</button>
             </div>
 
             <!-- Functional Button Section -->
             <div class="functional-button-section">
                 <div class="button-container">
-                    <a href="/report_and_monitoring">
-                        <button class="action-btn">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>REPORT AND MONITORING</span>
-                        </button>
-                    </a>
-                    <a href="/ticketing/ticketing">
+                    <button class="action-btn" onclick="window.location.href='Report and Monitoring.html';">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>REPORT AND MONITORING</span>
+                    </button>
+                    <a href="/employee/ticketing/ticketing">
                         <button class="action-btn">
                             <i class="fas fa-ticket-alt"></i>
                             <span>TICKETING</span>
                         </button>
                     </a>
-                    <a href="/task">
+                    <a href="/employee/ticketing/notice">
                         <button class="action-btn">
                             <i class="fas fa-bell"></i>
-                            <span>TASK</span>
+                            <span>NOTICE</span>
                         </button>
                     </a>
                 </div>
             </div>
 
-            <!-- Task Details Section -->
-            <div class="task-details">
+            <!-- Notice Details Section -->
+            <div class="notice-details">
                 @forelse ($tickets as $ticket)
-                    <div class="task-card">
+                    <div class="notice-card">
                         <h3>#{{ $ticket->control_no }}</h3>
-                        <div class="task-info">
+                        <div class="notice-info">
                             <p><strong>Time In:</strong> {{ $ticket->TimeIn }}</p>
                             <p><strong>Department:</strong> {{ $ticket->Department }}</p>
                         </div>
@@ -117,12 +99,12 @@
                                 <i class="fa fa-comments"></i> Chat
                             </button>
                             <button class="remarks-btn">
-                                <i class="fa fa-pencil-alt"></i> Remarks
+                                <i class="fa fa-pencil-alt"></i> Feedback
                             </button>
                         </div>
                     </div>
                 @empty
-                <p class="empty-message">No tasks assigned to you at this time.</p>
+                <p class="empty-message">You didn't submit a Ticket</p>
                 @endforelse
             </div>
 
@@ -140,6 +122,6 @@
             </form>
         </div>
     </div>
-    <script src="../js/ticketing/taskjavascript.js"></script>
+    <script src="{{ asset('js/employee/ticketing/noticejavascript.js') }}"></script>
 </body>
 </html>

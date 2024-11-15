@@ -1,0 +1,725 @@
+/* reportstyle.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/loginImages/pasigbg.jpg'); /* Relative path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.3; /* Adjust the opacity value here */
+    z-index: -1; /* Ensure the image stays in the background */
+}
+
+/* Container for sidebar and main content */
+.container {
+    display: flex;
+    min-height: 100vh; /* Minimum height of the viewport, but will expand with content */
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 200px; /* Set sidebar width */
+    background-color: white;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+    display: flex;
+    flex-direction: column; /* Arrange links vertically */
+    overflow: hidden; /* Prevent overflow of content */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Minimize button styles */
+.minimize-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.minimize-btn::before {
+    content: '\2630'; /* Hamburger icon */
+}
+
+/* Search styles */
+.search-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex-grow: 1; /* Take up available space */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 3px; /* Rounded corners */
+    margin-right: 5px; /* Space between input and button */
+    width: 150px; /* Adjust width */
+}
+
+.search-btn {
+    background-color: #003067; /* color background */
+    color: white; /* White text */
+    border: none;
+    padding: 6px 10px; /* Padding */
+    cursor: pointer;
+    border-radius: 3px; /* Rounded corners */
+}
+
+/* Add margin to sidebar elements */
+.sidebar-header {
+    margin-bottom: 15px; /* Space below minimize button */
+}
+
+.search-container {
+    margin-bottom: 15px; /* Space below search bar */
+}
+
+/* Navigation styles */
+.nav-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    flex-grow: 1; /* Allow nav links to take available space */
+}
+
+.nav-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Text color matches parent */
+    display: flex; /* Flex container for logo and text */
+    align-items: center; /* Center items vertically */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+/* Update padding for nav items to add space */
+.nav-item {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: flex-start; /* Align to the left */
+    padding: 10px 0; /* Space between links */
+    border-radius: 20px; /* Rounded corners for oval effect */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    color: #003067;
+}
+
+/* Smaller nav-label */
+.nav-label {
+    font-size: 12px; /* Smaller font size for labels */
+}
+
+/* Change nav-text size */
+.nav-text {
+    font-size: 14px; /* Adjust text size if needed */
+}
+
+/* Logo and label container */
+.nav-logo-container {
+    display: flex;
+    flex-direction: column; /* Stack logo above label */
+    align-items: center; /* Center items horizontally */
+    gap: 5px; /* Space between logo and label */
+}
+
+.nav-logo {
+    width: 24px; /* Adjust logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Hover effect for nav items */
+.nav-item:hover {
+    background-color: #003067; /* Dark blue background */
+    color: white; /* Text color change */
+}
+
+.nav-item:hover .nav-link,
+.nav-item:hover .nav-logo 
+.nav-item:hover .nav-label {
+    color: white; /* Change logo and text color */
+}
+
+/* Additional spacing on nav items */
+.nav-item:not(:last-child) {
+    margin-bottom: 10px; /* Space between each nav item */
+}
+
+/* Ensure minimized sidebar styles remain unchanged */
+.sidebar.minimized .nav-item {
+    justify-content: center; /* Center when minimized */
+}
+
+/* Minimized sidebar styles */
+.sidebar.minimized {
+    width: 50px; /* Set minimized width */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.sidebar.minimized .nav-text {
+    display: none; /* Hide text */
+}
+
+.sidebar .nav-item {
+    justify-content: left; /* Default justify */
+}
+
+.sidebar.minimized .nav-item {
+    justify-content: center; /* Center when minimized */
+}
+
+.sidebar .nav-label {
+    display: none; /* Hide labels when maximized */
+}
+
+.sidebar.minimized .nav-label {
+    display: inline; /* Show labels when minimized */
+}
+
+.sidebar.minimized .search-input {
+    display: none; /* Hide search input */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between elements */
+    margin-bottom: 20px; /* Space below header */
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size for back button */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px; /* Font size for menu button */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.menu {
+    position: absolute; /* Position it over the content */
+    top: 60px; /* Adjust position based on header height */
+    right: 20px; /* Align to the right */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+.menu ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 10px; /* Padding inside menu */
+    margin: 0; /* Remove margin */
+}
+
+.menu li {
+    padding: 5px 0; /* Padding for each item */
+}
+
+.menu a {
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Text color */
+}
+
+/* Show menu on button click */
+.menu.show {
+    display: block; /* Show menu when active */
+}
+
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1; /* Take remaining space */
+    padding: 20px;
+}
+
+.main-content h1 {
+    text-align: center; /* Center title */
+    font-size: 24px; /* Font size */
+    margin-bottom: 20px; /* Space below title */
+    color: #333; /* Title color */
+    letter-spacing: 10px; /* Adjust letter spacing */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align content horizontally */
+    margin-top: 20px; /* Space between heading and container */
+}
+
+
+/* Functional Button Section */
+.functional-button-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: transparent; /* No fill color */
+    border-radius: 8px;
+}
+
+.button-container .action-btn {
+    width: 120px;
+    height: 80px;
+    font-size: 14px;
+    color: #003067; /* Initial text color */
+    background-color: transparent; /* No fill color */
+    border: 2px solid white; /* White stroke */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Stack icon above text */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-container .action-btn i {
+    color: #003067; /* Initial icon color */
+    font-size: 24px; /* Icon size */
+}
+
+.button-container .action-btn:hover {
+    background-color: white; /* Fill color on hover */
+    color: #003067; /* Text color on hover */
+    border-color: #003067; /* Stroke color on hover */
+}
+
+.button-container .action-btn:hover i {
+    color: #003067; /* Icon color on hover */
+}
+
+/* Accordion Datepicker Container centered */
+.accordion-datepicker-container {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: auto; /* Adjust width as needed */
+    max-width: 900px; /* Set a max-width if desired */
+    margin: auto; /* Centers the accordion within its parent */
+}
+
+/* Accordion Container with Light Background */
+.accordion-container {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+	margin: 0px auto;
+	height:auto;
+
+}
+
+/* Accordion Background and Shadow */
+.accordion {
+    width: 100%;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* White background for the accordion */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Accordion Header Styling */
+.accordion h3 {
+    background-color: #003067; /* Light blue header */
+    color: white; /* Darker blue text */
+    cursor: pointer;
+    padding: 20px;
+    margin: 0;
+    font-size: 1.2em;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Add space between accordion headers */
+}
+
+/* Hover Effect for Accordion Header */
+.accordion h3:hover {
+    background-color: #b3d4fc; /* Slightly darker blue on hover */
+	color: black;
+}
+
+/* Expanded Accordion Content */
+.accordion h3.active + .accordion-content {
+    max-height: 500px; 
+    height: auto;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+}
+
+/* Icon Styling */
+.accordion h3::after {
+    content: '\25BC'; /* Down arrow */
+    font-size: 1.2em;
+    color: white; /* Icon color matches header text */
+    transition: transform 0.3s;
+}
+
+.accordion h3.active::after {
+    content: '\25B2'; /* Up arrow */
+}
+
+/* Accordion Content Styling */
+.accordion-content {
+	max-height: 0;  /* Hidden by default */
+    background-color: #f1f8ff; /* Very light blue content background */
+    overflow: hidden;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+    transition: max-height 0.5s ease-in-out, padding 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for content */
+}
+
+
+/* Date Input Container styles */
+.date-input-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    background-color: #f0f4f8; /* Slightly darker background */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+	width:auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    max-width: 600px; /* Optional: Set a max width for larger screens */
+    margin: 20px auto; /* Center container with automatic horizontal margin */
+	padding:20px;
+}
+
+/* Date input styling inside the date-input-container */
+.date-input-container input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 250px; /* Sets a maximum width for the date input */
+    box-sizing: border-box;
+    background-color: #fff; /* White background for input */
+}
+
+/* Optional styling for an action button inside the date-input-container */
+.date-input-container button {
+    margin-top: 15px; /* Space between input and button */
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date-input-container button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+/* Date Selection Container styles */
+.date-selection-container {
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    padding: 20px; /* Adds padding inside the container */
+    width: auto; /* Adjust width as needed */
+    max-width: 600px; /* Optional: Set a max width for larger screens */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+	
+}
+
+/* Styling for date input inside the container */
+.date-selection-container input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 250px; /* Sets a maximum width for the date input */
+    box-sizing: border-box;
+}
+
+/* Optional styling for a button in the date-selection container */
+.date-selection-container button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #003067;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.date-selection-container button:hover {
+    background-color: #0056b3;
+}
+
+
+.datepicker {
+	background: #f4f6f7; /* Light background for the picker */
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	padding: 20px;
+	width: auto;
+}
+
+.datepicker-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	color: #2c3e50; /* Darker color for header text */
+	font-weight: bold;
+}
+
+.month-select, .year-select {
+	font-size: 16px;
+	padding: 5px;
+	color: #2c3e50; /* Text color */
+	background-color: #ecf0f1; /* Light gray background */
+	border: 1px solid #bdc3c7; /* Subtle border */
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.datepicker-calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 10px;
+}
+
+.datepicker-calendar div {
+	text-align: center;
+	padding: 10px;
+	cursor: pointer;
+	color: #34495e; /* Dark blue text */
+	background-color: #ecf0f1; /* Light background */
+	border-radius: 4px;
+	transition: background-color 0.3s ease;
+}
+
+.datepicker-calendar div:hover {
+	background-color: #d0d9e0; /* Slightly darker hover color */
+	color:black;
+}
+
+.datepicker-calendar .selected {
+	background: #003067;
+	color: #fff;
+	border-radius: 50%;
+}
+
+.datepicker-footer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.datepicker-footer button {
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	font-weight: bold;
+	transition: background-color 0.3s ease;
+}
+
+.datepicker-footer .cancel {
+	background: #c0392b; /* Red for cancel button */
+	color: #fff;
+}
+
+.datepicker-footer .cancel:hover {
+	background: #a93226; /* Darker red on hover */
+}
+
+.datepicker-footer .ok {
+	background: #2e86c1; /* Blue for OK button */
+	color: #fff;
+}
+
+.datepicker-footer .ok:hover {
+	background: #21618c; /* Darker blue on hover */
+}
+
+.selected-date-input {
+	padding: 10px;
+	font-size: 16px;
+	width: 200px;
+	text-align: center;
+	border: 1px solid #bdc3c7;
+	border-radius: 4px;
+	background-color: #ecf0f1;
+	color: #34495e;
+}
+
+/* Calendar Button Styles */
+.calendar-btn {
+    background-color: #f0f0f0; /* Light background color */
+    border: 1px solid #ccc;    /* Border to make them stand out */
+    border-radius: 4px;        /* Rounded corners */
+    padding: 8px 12px;         /* Some padding for better clickability */
+    font-size: 16px;           /* Font size for readability */
+    cursor: pointer;          /* Pointer cursor to indicate a button */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.calendar-btn:hover {
+    background-color: #e0e0e0; /* Slightly darker background on hover */
+}
+
+.calendar-btn:active {
+    background-color: #d0d0d0; /* Even darker on active */
+}
+
+.calendar-btn.prev-year, .calendar-btn.next-year {
+    text-align: center;
+}
+
+.calendar-btn.prev-month, .calendar-btn.next-month {
+    text-align: center;
+}
+
+/* Media queries for responsive sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px; /* Smaller sidebar width for tablets */
+    }
+
+    .sidebar.minimized {
+        width: 40px; /* Further minimized width for smaller screens */
+    }
+
+    .nav-item {
+        padding: 8px 0; /* Reduce padding for nav items */
+    }
+
+    .nav-logo {
+        width: 20px; /* Slightly smaller logo size */
+    }
+
+    .nav-text {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100px; /* Narrower sidebar for mobile */
+    }
+
+    .sidebar.minimized {
+        width: 30px; /* Extra minimized width */
+    }
+
+    .nav-item {
+        padding: 6px 0; /* Further reduce padding */
+    }
+
+    .nav-logo {
+        width: 18px; /* Smaller logo size */
+    }
+
+    .nav-text {
+        display: none; /* Hide text labels on very small screens */
+    }
+}
+
+/* Mobile and small screen adjustments */
+@media (max-width: 768px) {
+    .button-container .action-btn {
+        width: 100%; /* Full width on mobile screens */
+        height: 50px; /* Adjust height for better fit */
+        font-size: 12px; /* Slightly smaller text on smaller screens */
+    }
+
+    /* Optionally, change the gap between icon and text on mobile */
+    .button-container .action-btn {
+        gap: 8px; /* Increase space between icon and text on small screens */
+    }
+
+    /* Icon size adjustment for mobile */
+    .button-container .action-btn i,
+    .button-container .action-btn img.button-icon {
+        width: 16px; /* Reduce icon size */
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button-container .action-btn {
+        width: 100%; /* Ensure the button takes full width on very small screens */
+        height: 45px; /* Further reduce the height */
+        font-size: 12px; /* Consistent smaller text size */
+    }
+
+    .button-container .action-btn {
+        gap: 10px; /* Increase gap for better spacing on small screens */
+    }
+
+    /* Further icon size reduction for very small screens */
+    .button-container .action-btn i,
+    .button-container .action-btn img.button-icon {
+        width: 14px; /* Further reduce icon size */
+        height: 14px;
+    }
+}
+
+/* Responsive adjustments for tablets */
+@media (max-width: 768px) {
+    .accordion-datepicker-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        padding: 8px; /* Slightly reduce padding */
+        gap: 15px; /* Adjust gap between items */
+        max-width: 100%; /* Take full width of smaller screens */
+    }
+}
+
+/* Responsive adjustments for smartphones */
+@media (max-width: 480px) {
+    .accordion-datepicker-container {
+        padding: 5px; /* Further reduce padding for smaller screens */
+        gap: 10px; /* Reduce gap between items */
+        width: 95%; /* Occupy 95% of the screen width */
+    }
+}

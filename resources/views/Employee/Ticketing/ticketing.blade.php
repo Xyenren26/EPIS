@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management Information System</title>
-    <link rel="stylesheet" href="{{ asset('css/employee/ticketing/ticketingstyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/Employee/ticketing/ticketingstyle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
@@ -68,23 +68,27 @@
                         <i class="fas fa-chart-bar"></i>
                         <span>REPORT AND MONITORING</span>
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-ticket-alt"></i>
-                        <span>TICKETING</span>
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-bell"></i>
-                        <span>NOTICE</span>
-                    </button>
+                    <a href="/employee/ticketing/ticketing">
+                        <button class="action-btn">
+                            <i class="fas fa-ticket-alt"></i>
+                            <span>TICKETING</span>
+                        </button>
+                    </a>
+                    <a href="/employee/ticketing/notice">
+                        <button class="action-btn">
+                            <i class="fas fa-bell"></i>
+                            <span>NOTICE</span>
+                        </button>
+                    </a>
                 </div>
             </div>
-            
+
             <!-- Ticket Form Container -->
             <div class="content-wrapper">
                 <div class="ticket-form-container">
                     <h2>Technical Service Slip</h2> <!-- New heading added here -->
                     <div class="control-number" id="controlNumber">{{ $nextControlNo }}</div>
-                    <form id="ticketForm" action="/employee/ticket" method="POST">
+                    <form id="ticketForm" action="/employee/ticket" method="GET" onsubmit="return false;">
                         @csrf
                         <!-- Row 1: Personal Information -->
                         <fieldset>
@@ -138,49 +142,31 @@
                          <!-- Row 3: Support Details -->
                         <fieldset>
                             <legend>Support Details</legend>
-                            <div class="support-details-container">
-                                <div class="support-details-field">
-                                    <label for="technicalSupport">Technical Support By:</label>
-                                    <select id="technicalSupport" name="technicalSupport" required>
-                                        <option value="" disabled selected>Select Technical Support</option>
-                                        <!-- Check if there are available technicians -->
-                                        @if($techSupport->isEmpty())
-                                            <option disabled>No available tech support at the moment.</option>
-                                        @else
-                                            <!-- Loop through techSupport and populate the dropdown -->
-                                            @foreach($techSupport as $support)
-                                                <option value="{{ $support->EmployeeID }}" 
-                                                        @if($support->EmployeeID == session('lastAssignedTech')) 
-                                                            disabled
-                                                        @endif>
-                                                    {{ $support->FirstName }} {{ $support->LastName }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Display message if no tech support is available -->
-                            @if($noTechMessage)
-                                <p>{{ $noTechMessage }}</p>
+                            <div class="support-details-field">
+                            @if ($noSupportAvailable)
+                                <p>No technical support staff are currently available.</p>
+                            @else
+                                <label for="technicalSupport">Technical Support By:</label>
+                                <input type="text" id="technicalSupport" name="technicalSupportName" value="{{ $selectedTechSupport->FirstName }} {{ $selectedTechSupport->LastName }}" readonly>
+                                <input type="hidden" name="technicalSupport" value="{{ $selectedTechSupport->EmployeeID }}">
                             @endif
-                                <div class="time-container">
-                                    <div class="support-details-field">
-                                        <label for="timeIn">Time In:</label>
-                                        <input type="datetime-local" id="timeIn" name="timeIn" required>
-                                    </div>
-                                    <div class="support-details-field">
-                                        <label for="timeOut">Time Out:</label>
-                                        <input type="datetime-local" id="timeOut" name="timeOut">
-                                    </div>
+                            </div>
+                                
+                            <div class="time-container">
+                                <div class="support-details-field">
+                                    <label for="timeIn">Time In:</label>
+                                    <input type="datetime-local" id="timeIn" name="timeIn" required>
+                                </div>
+                                <div class="support-details-field">
+                                    <label for="timeOut">Time Out:</label>
+                                    <input type="datetime-local" id="timeOut" name="timeOut">
                                 </div>
                             </div>
                         </fieldset>
 
                         <!-- Submit Button -->
                         <div class="form-actions">
-                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="submit" class="submit-btn" onclick="showConfirmationModal()">Submit Ticket</button>
                         </div>
                     </form>
                 </div>
@@ -188,13 +174,22 @@
         </div>
     </div>
 
-
-
+    <!-- Modal Structure -->
+    <div id="confirmationModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Confirm Your Submission</h3>
+            <p id="confirmationMessage"></p>
+            <div class="modal-buttons">
+                <button type="button" class="confirm-btn" onclick="submitForm()">Confirm</button>
+                <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Menu (hidden by default) -->
     <div class="menu" id="menu" style="display: none;">
         <ul>
-            <li><a href="/employee/profile">Profile</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
         </ul>
     </div>
@@ -204,6 +199,6 @@
         @csrf
     </form>
 
-    <script src="{{ asset('js/employee/ticketing/ticketingjavascript.js')}}"></script>
+    <script src="{{ asset('js/employee/ticketing/ticketingjavascript.js') }}"></script>
 </body>
 </html>

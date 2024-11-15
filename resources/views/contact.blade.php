@@ -67,30 +67,103 @@
             </div>
         </div>
 
-
         <!-- Main content -->
         <div class="main-content">
             <div class="header">
-            <button class="back-btn" onclick="goBack()">
-                <i class="fas fa-arrow-left"></i> 
-            </button> <!-- Back button -->
-                <h1>MANAGEMENT INFORMATION SYSTEM</h1>
-                <button class="menu-btn" onclick="toggleMenu()">⋮</button> <!-- Three vertical dots -->
+                <button class="back-btn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> 
+                </button>
+                <h1>CONTACT > OFFICIALS</h1>
+                <button class="menu-btn" onclick="toggleMenu()">⋮</button>
             </div>
 
-            <!--lagaay mo dito yun code mo-->
+            <!-- Officials Box -->
+            <div class="officials-box">
+                <h2>Mayor</h2>
+                <div class="official">
+                    <img src="{{ asset('images/officials/vico_sotto.jpg') }}" alt="Vico Sotto">
+                    <p>Vico Sotto</p>
+                </div>
 
+                <h2>Vice Mayor</h2>
+                <div class="official">
+                    <img src="{{ asset('images/officials/robert_jaworski_jr.jpg') }}" alt="Robert Jaworski Jr.">
+                    <p>Robert Jaworski Jr.</p>
+                </div>
 
+                <h2>Sangguniang Panlungsod</h2>
 
+                <h3>First District</h3>
+                <div class="district">
+                    <div class="official">
+                        <img src="{{ asset('images/officials/kiko_rustia.jpg') }}" alt="Kiko Rustia">
+                        <p>Kiko Rustia (NPC)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/simon_romulo_tantoco.jpg') }}" alt="Simon Romulo Tantoco">
+                        <p>Simon Romulo Tantoco (NPC)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/pao_santiago.jpg') }}" alt="Pao Santiago">
+                        <p>Pao Santiago (NPC)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/volta_delos_santos.jpg') }}" alt="Volta Delos Santos">
+                        <p>Volta Delos Santos (NPC)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/eric_gonzales.jpg') }}" alt="Eric Gonzales">
+                        <p>Eric Gonzales (NPC)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/reggie_balderrama.jpg') }}" alt="Reggie Balderrama">
+                        <p>Reggie Balderrama (PDDS)</p>
+                    </div>
+                </div>
 
+                <h3>Second District</h3>
+                <div class="district">
+                    <div class="official">
+                        <img src="{{ asset('images/officials/angelu_de_leon.jpg') }}" alt="Angelu De Leon">
+                        <p>Angelu De Leon (Aksyon)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/corie_raymundo.jpg') }}" alt="Corie Raymundo">
+                        <p>Corie Raymundo (NPC)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/syvel_asilo.jpg') }}" alt="Syvel Asilo">
+                        <p>Syvel Asilo (NP)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/buboy_agustin.jpg') }}" alt="Buboy Agustin">
+                        <p>Buboy Agustin (Aksyon)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/quin_cruz.jpg') }}" alt="Quin Cruz">
+                        <p>Quin Cruz (Aksyon)</p>
+                    </div>
+                    <div class="official">
+                        <img src="{{ asset('images/officials/maro_martires.jpg') }}" alt="Maro Martires">
+                        <p>Maro Martires (NPC)</p>
+                    </div>
+                </div>
 
+                <h2>Ex-Officio Members</h2>
+                <div class="official">
+                    <img src="{{ asset('images/officials/marl_oscar_de_guzman.jpg') }}" alt="Marl Oscar de Guzman">
+                    <p>Marl Oscar de Guzman – President, Liga ng mga Barangay (LNB)</p>
+                </div>
+                <div class="official">
+                    <img src="{{ asset('images/officials/georgia_lynne_clemente.jpg') }}" alt="Georgia Lynne Clemente">
+                    <p>Georgia Lynne P. Clemente – President, Sangguniang Kabataan Federation</p>
+                </div>
 
-            <!-- Menu (hidden by default) -->
-            <div class="menu" id="menu" style="display: none;">
-                <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
+                <h2>Congressman (Lone District)</h2>
+                <div class="official">
+                    <img src="{{ asset('images/officials/roman_romulo.jpg') }}" alt="Roman Romulo">
+                    <p>Roman Romulo</p>
+                </div>
             </div>
         </div>
     </div>

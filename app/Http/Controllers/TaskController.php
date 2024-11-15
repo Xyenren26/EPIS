@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TicketingTable;
-use App\Models\AccountTable;
 
 class TaskController extends Controller
 {

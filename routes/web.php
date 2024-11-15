@@ -10,12 +10,14 @@ use App\Http\Controllers\AdminController;
 // Controllers for technical-support and technical-administrator
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 // Employee-specific controllers
 use App\Http\Controllers\Employee\EmployeeHomeController;
 use App\Http\Controllers\Employee\EmployeeTicketController;
+use App\Http\Controllers\Employee\EmployeeNoticeController;
 use App\Http\Controllers\Employee\EmployeeProfileController;
 use App\Http\Controllers\Employee\EmployeeContactController;
 
@@ -42,6 +44,9 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/ticketing/ticketing', [TicketController::class, 'showTicketing'])->name('ticketing.ticketing');
     Route::post('/ticket', [TicketController::class, 'storeTicket']);
 
+    // Report and monitoring routes
+    Route::get('/report_and_monitoring', [ReportController::class, 'showReport'])->name('ticketing.report');
+
     // Task route
     Route::get('/ticketing/task', [TaskController::class, 'showTask'])->name('ticketing.task');
 
@@ -49,7 +54,9 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
     Route::put('/profile/{employeeID}', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/update-profile-picture', [ProfileController::class, 'updateProfilePicture'])->name('update.profile.picture');
-    Route::get('/contact', [ContactController::class, 'showContact']);
+
+    Route::get('/contact', [Contactcontroller::class, 'showContact']);
+    Route::post('/save-contact', [Contactcontroller::class, 'saveContact'])->name('contact.save');
     
     // Inventory routes
     Route::get('/in-inventory', [InventoryController::class, 'showInventory']);
@@ -58,7 +65,7 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/all-inventory', [InventoryController::class, 'showAllInventory']);
 
     // Admin routes
-    Route::get('/admin', [AdminController::class, 'showAdmin']);
+    Route::get('/admin', [AdminController::class, 'showAdmin'])->middleware('checkAdmin');
     Route::post('/admin/accept/{employeeID}', [AdminController::class, 'acceptAccount']);
     Route::delete('/admin/void/{employeeID}', [AdminController::class, 'voidAccount']);
 });
@@ -69,8 +76,11 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/employee/home', [EmployeeHomeController::class, 'showEmployeeHome'])->name('employee.home');
 
     // Ticketing routes
-    Route::get('/employee/ticketing/ticketing', [EmployeeTicketController::class, 'showTicketing']);
+    Route::get('/employee/ticketing/ticketing', [EmployeeTicketController::class, 'showTicketing'])->name('employee.ticketing.ticketing');
     Route::get('/employee/ticket', [EmployeeTicketController::class, 'storeTicket']);
+
+    // notice route
+    Route::get('employee/ticketing/notice', [EmployeeNoticeController::class, 'showNotice'])->name('employee.ticketing.notice');
 
     // Employee-specific profile and contact routes
     Route::get('/employee/profile', [EmployeeProfileController::class, 'showEmployeeProfile'])->name('employee.profile.show');

@@ -12,11 +12,17 @@ class LoginController extends Controller
 {
     public function showLogin()
     {
-        // Check if the user is already authenticated
+        //Check if the user is already authenticated
         if (Auth::check()) {
-            return redirect()->route('home'); // Redirect to home if logged in
+            // Redirect based on account type
+            $accountType = Auth::user()->AccountType;
+            if ($accountType === 'employee') {
+                return redirect('/employee/home'); // Redirect employee to the client folder
+            } elseif (in_array($accountType, ['technical-support', 'technical-administrator'])) {
+                return redirect()->route('home'); // Redirect technical roles to main home
+            }
         }
-
+    
         return view('login'); // Refers to resources/views/login.blade.php
     }
 

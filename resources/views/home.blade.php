@@ -86,10 +86,12 @@
             </div>
 
             <div class="buttons">
-                <button class="icon-button">
-                    <i class="fas fa-tasks"></i> <!-- Task icon -->
-                    Monitoring
-                </button>
+                <a href="/report_and_monitoring">
+                    <button class="icon-button">
+                        <i class="fas fa-tasks"></i> <!-- Task icon -->
+                        Monitoring
+                    </button>
+                </a>
                 <a href="/ticketing/ticketing">
                     <button class="icon-button">
                         <i class="fas fa-ticket-alt"></i> <!-- Ticket icon -->

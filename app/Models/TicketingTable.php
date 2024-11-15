@@ -26,7 +26,8 @@ class TicketingTable extends Model
         'Remarks',
         'Technical_Supported',
         'TimeIn',
-        'TimeOut'
+        'TimeOut',
+        'Status'
     ];
 
     // Define any relationships or custom methods if necessary

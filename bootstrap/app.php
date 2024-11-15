@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware -> alias ([
             'UpdateLastActivity'=> \App\Http\Middleware\UpdateLastActivity::class,
             'ClearExpiredSession'=> \App\Http\Middleware\ClearExpiredSession::class,
+            'checkAdmin' => \App\Http\Middleware\CheckIfTechnicalAdministrator::class,
         ]);
     })
         

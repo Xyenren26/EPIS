@@ -238,3 +238,60 @@ body {
     color: #333; /* Title color */
     letter-spacing: 10px; /* Adjust letter spacing */
 }
+
+.officials-box {
+    border: 2px solid #003067; /* Stroke color */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.officials-box h2, .officials-box h3 {
+    color: #003067;
+    margin-top: 10px;
+}
+
+.district {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.official {
+    text-align: center;
+}
+
+.official img {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #003067;
+    margin-bottom: 5px;
+}
+
+.official p {
+    color: #003067;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* Tablet view */
+@media (max-width: 768px) {
+    .main-container {
+        gap: 15px; /* Reduce gap between elements */
+        margin-top: 15px; /* Adjust margin for smaller screens */
+    }
+}
+
+/* Smartphone view */
+@media (max-width: 480px) {
+    .main-container {
+        gap: 10px; /* Further reduce gap */
+        margin-top: 10px; /* Adjust margin for smaller screens */
+        padding: 5px; /* Reduce padding */
+    }
+}

@@ -79,7 +79,7 @@
                 <!-- Action Buttons and Logo -->
                 <div class="action-buttons">
                     <button class="action-btn">New</button>
-                    <button class="action-btn">Add</button>
+                    <button class="action-btn">Search</button>
                     <button class="action-btn">Export</button>
                     <img src="images/LoginImages/pasiglogo.png" alt="Pasig Logo" class="pasig-logo">
                 </div>

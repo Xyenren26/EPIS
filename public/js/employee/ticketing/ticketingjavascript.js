@@ -122,3 +122,52 @@ function exportToPDF() {
     });
 }
 
+function showConfirmationModal() {
+    // Gather form field values
+    const firstName = document.getElementById('first-name').value;
+    const lastName = document.getElementById('last-name').value;
+    const department = document.getElementById('department').value;
+    const concern = document.getElementById('concern').value;
+    const employeeId = document.getElementById('employeeId').value;
+    const technicalSupport = document.getElementById('technicalSupport').value;
+    const timeIn = document.getElementById('timeIn').value;
+
+    // Check if any required fields are empty
+    if (!firstName || !lastName || !department || !concern || !employeeId || !technicalSupport || !timeIn) {
+        alert("Please fill in all the fields before submitting.");
+        return; // Prevent the modal from opening if any field is empty
+    }
+
+    // Format the Time In value to remove the 'T' and display a more readable format
+    const formattedTimeIn = new Date(timeIn).toLocaleString();
+
+    // Set the confirmation message with entered details
+    const confirmationMessage = `
+        First Name: ${firstName}
+        Last Name: ${lastName}
+        Department: ${department}
+        Concern: ${concern}
+        Employee ID: ${employeeId}
+        Technical Support: ${technicalSupport}
+        Time In: ${formattedTimeIn}
+    `;
+    document.getElementById('confirmationMessage').textContent = confirmationMessage;
+
+    // Show the modal
+    document.getElementById('confirmationModal').style.display = 'flex';
+}
+
+function closeModal() {
+    // Hide the modal
+    document.getElementById('confirmationModal').style.display = 'none';
+}
+
+function submitForm() {
+    // Submit the form after confirmation
+    document.getElementById('ticketForm').onsubmit = function() {
+        return true;
+    };
+    document.getElementById('ticketForm').submit();
+}
+
+
