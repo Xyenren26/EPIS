@@ -16,7 +16,7 @@
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
+                <button class="search-btn" onclick="toggleSearchPopup()">🔍</button> <!-- Search button -->
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -109,11 +109,22 @@
                 </a>
             </div>
 
-           <!-- Recent items section -->
+            <!-- Recent items section -->
             <div class="recent-items">
                 <h2 class="recent-title">Recent</h2> <!-- Add this line -->
                 
             </div>
+
+            <!-- Search Pop-Up (hidden by default) -->
+            <div class="search-popup" id="searchPopup">
+                <div class="search-popup-header">
+                    SEARCH
+                    <button class="search-popup-close" onclick="closeSearchPopup()">×</button> <!-- Close Button -->
+                </div>
+                <input type="text" class="search-popup-input" placeholder="Enter your query here...">
+                <button class="search-popup-submit">Search</button>
+            </div>
+
 
 
             <!-- Menu (hidden by default) -->

@@ -24,3 +24,23 @@ function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; // Toggle visibility
 }
+
+
+// Toggle the visibility of the chatbox
+function openChatBox(employeeName) {
+    const chatbox = document.getElementById('chatbox');
+    const chatboxHeader = document.getElementById('chatbox-employee-name');
+
+    // Update the chatbox header with the employee's name
+    chatboxHeader.textContent = `Chat with ${employeeName}`;
+
+    // Show the chatbox
+    chatbox.classList.remove('hidden');
+}
+
+function closeChatBox() {
+    const chatbox = document.getElementById('chatbox');
+
+    // Hide the chatbox
+    chatbox.classList.add('hidden');
+}

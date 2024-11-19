@@ -18,7 +18,7 @@
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button>
+                <button class="search-btn" onclick="toggleSearchPopup()">🔍</button> <!-- Search button -->
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -107,7 +107,9 @@
 			<!-- Buttons -->
             <div class="form-buttons">
                 <button class="action-btn add-btn">New</button>
-                <button class="action-btn add-btn">Search</button>
+                <a href="/search-result">
+                    <button class="action-btn add-btn">Search</button>
+                </a>
                 <button class="action-btn export-btn" onclick="openExportPopup()">Export</button>
             </div>
 			
@@ -216,6 +218,16 @@
         </div>
     </div>
 
+    <!-- Search Pop-Up (hidden by default) -->
+    <div class="search-popup" id="searchPopup">
+        <div class="search-popup-header">
+            SEARCH
+            <button class="search-popup-close" onclick="closeSearchPopup()">×</button> <!-- Close Button -->
+        </div>
+        <input type="text" class="search-popup-input" placeholder="Enter your query here...">
+        <button class="search-popup-submit">Search</button>
+    </div>
+    
     <!-- Menu (hidden by default) -->
     <div class="menu" id="menu" style="display: none;">
         <ul>

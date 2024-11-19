@@ -78,4 +78,12 @@ class TicketController extends Controller
 
     return redirect()->route('ticketing.ticketing')->with('success', 'Ticket has been submitted.');
 }
+public function showResult(Request $request)
+{
+    // Fetch all ticketing records
+    $tickets = TicketingTable::all();
+
+    // Pass the tickets to the search result view
+    return view('ticketing.searchresult', compact('tickets'));
+}
 }

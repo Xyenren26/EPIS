@@ -43,6 +43,7 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     // Ticketing routes
     Route::get('/ticketing/ticketing', [TicketController::class, 'showTicketing'])->name('ticketing.ticketing');
     Route::post('/ticket', [TicketController::class, 'storeTicket']);
+    Route::get('/search-result', [TicketController::class, 'showResult'])->name('ticketing.searchresult');
 
     // Report and monitoring routes
     Route::get('/report_and_monitoring', [ReportController::class, 'showReport'])->name('ticketing.report');
@@ -54,6 +55,8 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.show');
     Route::put('/profile/{employeeID}', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/update-profile-picture', [ProfileController::class, 'updateProfilePicture'])->name('update.profile.picture');
+    Route::post('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
+
 
     Route::get('/contact', [Contactcontroller::class, 'showContact']);
     Route::post('/save-contact', [Contactcontroller::class, 'saveContact'])->name('contact.save');

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/Employee/ticketing/noticestyle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-
 </head>
 <body>
     <div class="container">
@@ -24,8 +23,8 @@
                 <div class="nav-item">
                     <a href="/employee/home" class="nav-link">
                         <div class="nav-logo-container">
-                            <i class="fas fa-home nav-logo"></i> <!-- Home icon -->
-                            <span class="nav-label">HOME</span> <!-- Home label -->
+                            <i class="fas fa-home nav-logo"></i>
+                            <span class="nav-label">HOME</span>
                         </div>
                         <span class="nav-text">HOME</span>
                     </a>
@@ -33,8 +32,8 @@
                 <div class="nav-item">
                     <a href="/employee/profile" class="nav-link">
                         <div class="nav-logo-container">
-                            <i class="fas fa-user nav-logo"></i> <!-- Profile icon -->
-                            <span class="nav-label">PROFILE</span> <!-- Profile label -->
+                            <i class="fas fa-user nav-logo"></i>
+                            <span class="nav-label">PROFILE</span>
                         </div>
                         <span class="nav-text">PROFILE</span>
                     </a>
@@ -42,8 +41,8 @@
                 <div class="nav-item">
                     <a href="/employee/contact" class="nav-link">
                         <div class="nav-logo-container">
-                            <i class="fas fa-envelope nav-logo"></i> <!-- Contact icon -->
-                            <span class="nav-label">CONTACT</span> <!-- Contact label -->
+                            <i class="fas fa-envelope nav-logo"></i>
+                            <span class="nav-label">CONTACT</span>
                         </div>
                         <span class="nav-text">CONTACT</span>
                     </a>
@@ -91,11 +90,18 @@
                         <div class="notice-info">
                             <p><strong>Time In:</strong> {{ $ticket->TimeIn }}</p>
                             <p><strong>Department:</strong> {{ $ticket->Department }}</p>
+                            <p><strong>Technical Supported by:</strong> 
+                                @if($ticket->technicalSupport)
+                                    {{ $ticket->technicalSupport->FirstName }} {{ $ticket->technicalSupport->LastName }}
+                                @else
+                                    No technical support assigned
+                                @endif
+                            </p>
                         </div>
 
                         <!-- Action Buttons - Positioned on the Right but Aligned with Content -->
                         <div class="action-buttons">
-                            <button class="chat-btn">
+                            <button class="chat-btn" onclick="openChatBox('{{ $ticket->technicalSupport->FirstName }} {{ $ticket->technicalSupport->LastName }}')">
                                 <i class="fa fa-comments"></i> Chat
                             </button>
                             <button class="remarks-btn">
@@ -106,6 +112,21 @@
                 @empty
                 <p class="empty-message">You didn't submit a Ticket</p>
                 @endforelse
+            </div>
+
+            <!-- Chatbox for Technical Support -->
+            <div id="chatbox" class="chatbox hidden">
+                <div class="chatbox-header">
+                    <h3 id="chatbox-employee-name">Technical Support Chat</h3>
+                    <button class="close-btn" onclick="closeChatBox()">×</button>
+                </div>
+                <div class="chatbox-body">
+                    <!-- Chat messages will go here -->
+                </div>
+                <div class="chatbox-footer">
+                    <input type="text" id="chat-input" placeholder="Type a message..." />
+                    <button id="send-btn">Send</button>
+                </div>
             </div>
 
             <!-- Menu (hidden by default) -->
@@ -122,6 +143,7 @@
             </form>
         </div>
     </div>
+
     <script src="{{ asset('js/employee/ticketing/noticejavascript.js') }}"></script>
 </body>
 </html>

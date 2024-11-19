@@ -31,4 +31,9 @@ class TicketingTable extends Model
     ];
 
     // Define any relationships or custom methods if necessary
+
+    public function technicalSupport()
+    {
+        return $this->belongsTo(AccountTable::class, 'Technical_Supported', 'EmployeeID');
+    }
 }

@@ -14,6 +14,40 @@ function toggleSidebar() {
     minimizeBtn.innerHTML = ''; // Always display hamburger icon
 }
 
+function toggleSearchPopup() {
+    const sidebar = document.querySelector('.sidebar');
+    const searchPopup = document.getElementById('searchPopup');
+
+    // Check if the sidebar is minimized
+    if (sidebar.classList.contains('minimized')) {
+        if (searchPopup.style.display === 'none' || searchPopup.style.display === '') {
+            searchPopup.style.display = 'block';
+        } else {
+            searchPopup.style.display = 'none';
+        }
+    } else {
+        console.log('Search popup is only available when the sidebar is minimized.');
+    }
+}
+
+function closeSearchPopup() {
+    const searchPopup = document.getElementById('searchPopup');
+    searchPopup.style.display = 'none';
+}
+
+// Close the popup when clicking outside
+window.addEventListener('click', function (e) {
+    const searchPopup = document.getElementById('searchPopup');
+    if (
+        searchPopup.style.display === 'block' &&
+        !searchPopup.contains(e.target) &&
+        !e.target.classList.contains('search-btn') &&
+        !e.target.classList.contains('search-popup-close')
+    ) {
+        searchPopup.style.display = 'none';
+    }
+});
+
 // Function to go back
 function goBack() {
     window.history.back(); // Navigate to the previous page
@@ -162,4 +196,36 @@ function saveImage() {
     // Submit the form if validation passes
     document.getElementById('imageUploadForm').submit();
 }
+
+function showChangePasswordSection() {
+    // Hide the profile info section
+    document.getElementById('profileInfo').style.display = 'none';
+    
+    // Show the change password section
+    document.getElementById('changePasswordSection').style.display = 'block';
+}
+
+document.getElementById('changePasswordForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const oldPassword = document.getElementById('oldPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    // Regex for password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (!passwordRegex.test(newPassword)) {
+        alert("New password does not meet the criteria!");
+        return;
+    }
+
+    if (newPassword !== confirmPassword) {
+        alert("New password and confirmation do not match!");
+        return;
+    }
+
+    // Submit form after validation
+    this.submit();
+});
 

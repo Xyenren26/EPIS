@@ -56,6 +56,10 @@ class SignupController extends Controller
 
         $account->Password = Hash::make($request->password); // Hash the password before saving
 
+        // Set default values for 'is_selected' and 'on_break' to 0 if not provided
+        $account->is_selected = $request->has('is_selected') ? $request->is_selected : 0;
+        $account->on_break = $request->has('on_break') ? $request->on_break : 0;
+
         // Save the account to the database
         $account->save();
 

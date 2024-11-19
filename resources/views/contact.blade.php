@@ -16,7 +16,7 @@
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
+                <button class="search-btn" onclick="toggleSearchPopup()">🔍</button> <!-- Search button -->
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -81,13 +81,13 @@
             <div class="officials-box">
                 <h2>Mayor</h2>
                 <div class="official">
-                    <img src="{{ asset('images/officials/vico_sotto.jpg') }}" alt="Vico Sotto">
+                    <img src="{{ asset('images/officials/default.jpg') }}" alt="Vico Sotto">
                     <p>Vico Sotto</p>
                 </div>
 
                 <h2>Vice Mayor</h2>
                 <div class="official">
-                    <img src="{{ asset('images/officials/robert_jaworski_jr.jpg') }}" alt="Robert Jaworski Jr.">
+                    <img src="{{ asset('images/officials/default.jpg') }}" alt="Robert Jaworski Jr.">
                     <p>Robert Jaworski Jr.</p>
                 </div>
 
@@ -96,27 +96,27 @@
                 <h3>First District</h3>
                 <div class="district">
                     <div class="official">
-                        <img src="{{ asset('images/officials/kiko_rustia.jpg') }}" alt="Kiko Rustia">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Kiko Rustia">
                         <p>Kiko Rustia (NPC)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/simon_romulo_tantoco.jpg') }}" alt="Simon Romulo Tantoco">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Simon Romulo Tantoco">
                         <p>Simon Romulo Tantoco (NPC)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/pao_santiago.jpg') }}" alt="Pao Santiago">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Pao Santiago">
                         <p>Pao Santiago (NPC)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/volta_delos_santos.jpg') }}" alt="Volta Delos Santos">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Volta Delos Santos">
                         <p>Volta Delos Santos (NPC)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/eric_gonzales.jpg') }}" alt="Eric Gonzales">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Eric Gonzales">
                         <p>Eric Gonzales (NPC)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/reggie_balderrama.jpg') }}" alt="Reggie Balderrama">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Reggie Balderrama">
                         <p>Reggie Balderrama (PDDS)</p>
                     </div>
                 </div>
@@ -124,49 +124,60 @@
                 <h3>Second District</h3>
                 <div class="district">
                     <div class="official">
-                        <img src="{{ asset('images/officials/angelu_de_leon.jpg') }}" alt="Angelu De Leon">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Angelu De Leon">
                         <p>Angelu De Leon (Aksyon)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/corie_raymundo.jpg') }}" alt="Corie Raymundo">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Corie Raymundo">
                         <p>Corie Raymundo (NPC)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/syvel_asilo.jpg') }}" alt="Syvel Asilo">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Syvel Asilo">
                         <p>Syvel Asilo (NP)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/buboy_agustin.jpg') }}" alt="Buboy Agustin">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Buboy Agustin">
                         <p>Buboy Agustin (Aksyon)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/quin_cruz.jpg') }}" alt="Quin Cruz">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Quin Cruz">
                         <p>Quin Cruz (Aksyon)</p>
                     </div>
                     <div class="official">
-                        <img src="{{ asset('images/officials/maro_martires.jpg') }}" alt="Maro Martires">
+                        <img src="{{ asset('images/officials/default.jpg') }}" alt="Maro Martires">
                         <p>Maro Martires (NPC)</p>
                     </div>
                 </div>
 
                 <h2>Ex-Officio Members</h2>
                 <div class="official">
-                    <img src="{{ asset('images/officials/marl_oscar_de_guzman.jpg') }}" alt="Marl Oscar de Guzman">
+                    <img src="{{ asset('images/officials/default.jpg') }}" alt="Marl Oscar de Guzman">
                     <p>Marl Oscar de Guzman – President, Liga ng mga Barangay (LNB)</p>
                 </div>
                 <div class="official">
-                    <img src="{{ asset('images/officials/georgia_lynne_clemente.jpg') }}" alt="Georgia Lynne Clemente">
+                    <img src="{{ asset('images/officials/default.jpg') }}" alt="Georgia Lynne Clemente">
                     <p>Georgia Lynne P. Clemente – President, Sangguniang Kabataan Federation</p>
                 </div>
 
                 <h2>Congressman (Lone District)</h2>
                 <div class="official">
-                    <img src="{{ asset('images/officials/roman_romulo.jpg') }}" alt="Roman Romulo">
+                    <img src="{{ asset('images/officials/default.jpg') }}" alt="Roman Romulo">
                     <p>Roman Romulo</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Search Pop-Up (hidden by default) -->
+    <div class="search-popup" id="searchPopup">
+        <div class="search-popup-header">
+            SEARCH
+            <button class="search-popup-close" onclick="closeSearchPopup()">×</button> <!-- Close Button -->
+        </div>
+        <input type="text" class="search-popup-input" placeholder="Enter your query here...">
+        <button class="search-popup-submit">Search</button>
+    </div>
+
     <script src="js/contactjavascript.js"></script>
 </body>
 </html>

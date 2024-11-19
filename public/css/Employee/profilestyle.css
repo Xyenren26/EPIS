@@ -317,6 +317,10 @@ label {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
+#accountType {
+    text-transform: capitalize; /* Force capitalize text */
+}
+
 /* Readonly Input Styles */
 .form-group input[readonly] {
     background-color: #f4f4f4; /* Light gray background for readonly */

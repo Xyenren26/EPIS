@@ -10,10 +10,15 @@ class EmployeeNoticeController extends Controller
 {
     public function showNotice(Request $request)
     {
-        $employeeid = $request-> user() -> EmployeeID;
+        $employeeid = $request->user()->EmployeeID;
 
-        $tickets = TicketingTable::where('EmployeeID', $employeeid)->get();
+        // Eager load the technical support related to the notices
+        $tickets = TicketingTable::where('EmployeeID', $employeeid)
+                                 ->with('technicalSupport') // Eager load the technical support
+                                 ->get();
 
-        return view('employee.ticketing.notice', compact('tickets')); // Refers to resources/views/employee/ticketing/notice.blade.php
+        
+
+        return view('employee.ticketing.notice', compact('tickets'));
     }
 }

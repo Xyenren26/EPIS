@@ -16,7 +16,7 @@
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
+                <button class="search-btn" onclick="toggleSearchPopup()">🔍</button> <!-- Search button -->
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/inventory" class="nav-link">
+                    <a href="/in-inventory" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-boxes nav-logo"></i> <!-- Inventory icon -->
                             <span class="nav-label">INVENTORY</span> <!-- Inventory label -->
@@ -79,12 +79,47 @@
                 <!-- Action Buttons and Logo -->
                 <div class="action-buttons">
                     <button class="action-btn">New</button>
-                    <button class="action-btn">Search</button>
-                    <button class="action-btn">Export</button>
+                    <button class="action-btn" onclick="openSearch()">Search</button>
+                    <button class="action-btn export-btn" onclick="openExportPopup()">Export</button>
                     <img src="images/LoginImages/pasiglogo.png" alt="Pasig Logo" class="pasig-logo">
                 </div>
+
+                <!-- Search Popup -->
+                <div id="search" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup('search')">×</span>
+                        <h3>Search</h3>
+                        <div class="input-container">
+                            <input type="text" class="search-input" placeholder="Enter search query">
+                            <button class="search-submit-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Popup -->
+                <div id="exportPopup" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup('exportPopup')">×</span>
+                        <h3>Export</h3>
+                        <div class="button-container">
+                            <button class="export-option-btn">Export to CSV</button>
+                            <button class="export-option-btn">Export to Excel</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             
+            <!-- Search Pop-Up (hidden by default) -->
+            <div class="search-popup" id="searchPopup">
+                <div class="search-popup-header">
+                    SEARCH
+                    <button class="search-popup-close" onclick="closeSearchPopup()">×</button> <!-- Close Button -->
+                </div>
+                <input type="text" class="search-popup-input" placeholder="Enter your query here...">
+                <button class="search-popup-submit">Search</button>
+            </div>
+
             <!-- Menu (hidden by default) -->
             <div class="menu" id="menu" style="display: none;">
                 <ul>

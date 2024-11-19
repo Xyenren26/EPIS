@@ -16,7 +16,7 @@
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
+                <button class="search-btn" onclick="toggleSearchPopup()">🔍</button> <!-- Search button -->
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="/inventory" class="nav-link">
+                    <a href="/out-inventory" class="nav-link">
                         <div class="nav-logo-container">
                             <i class="fas fa-boxes nav-logo"></i> <!-- Inventory icon -->
                             <span class="nav-label">INVENTORY</span> <!-- Inventory label -->
@@ -83,6 +83,16 @@
                     <button class="action-btn">Export</button>
                     <img src="images/LoginImages/pasiglogo.png" alt="Pasig Logo" class="pasig-logo">
                 </div>
+            </div>
+
+            <!-- Search Pop-Up (hidden by default) -->
+            <div class="search-popup" id="searchPopup">
+                <div class="search-popup-header">
+                    SEARCH
+                    <button class="search-popup-close" onclick="closeSearchPopup()">×</button> <!-- Close Button -->
+                </div>
+                <input type="text" class="search-popup-input" placeholder="Enter your query here...">
+                <button class="search-popup-submit">Search</button>
             </div>
             
             <!-- Menu (hidden by default) -->

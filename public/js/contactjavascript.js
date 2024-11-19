@@ -21,6 +21,40 @@ function toggleSidebar() {
     }
 }
 
+function toggleSearchPopup() {
+    const sidebar = document.querySelector('.sidebar');
+    const searchPopup = document.getElementById('searchPopup');
+
+    // Check if the sidebar is minimized
+    if (sidebar.classList.contains('minimized')) {
+        if (searchPopup.style.display === 'none' || searchPopup.style.display === '') {
+            searchPopup.style.display = 'block';
+        } else {
+            searchPopup.style.display = 'none';
+        }
+    } else {
+        console.log('Search popup is only available when the sidebar is minimized.');
+    }
+}
+
+function closeSearchPopup() {
+    const searchPopup = document.getElementById('searchPopup');
+    searchPopup.style.display = 'none';
+}
+
+// Close the popup when clicking outside
+window.addEventListener('click', function (e) {
+    const searchPopup = document.getElementById('searchPopup');
+    if (
+        searchPopup.style.display === 'block' &&
+        !searchPopup.contains(e.target) &&
+        !e.target.classList.contains('search-btn') &&
+        !e.target.classList.contains('search-popup-close')
+    ) {
+        searchPopup.style.display = 'none';
+    }
+});
+
 // Go back function (browser history)
 function goBack() {
     window.history.back(); // Navigate to the previous page

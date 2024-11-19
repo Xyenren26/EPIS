@@ -16,7 +16,7 @@
             </div>
             <div class="search-container">
                 <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
+                <button class="search-btn" onclick="toggleSearchPopup()">🔍</button> <!-- Search button -->
             </div>
             <div class="nav-links">
                 <div class="nav-item">
@@ -109,13 +109,16 @@
                         <div class="task-info">
                             <p><strong>Time In:</strong> {{ $ticket->TimeIn }}</p>
                             <p><strong>Department:</strong> {{ $ticket->Department }}</p>
+                            <p><strong>Issued By:</strong> {{ $ticket->fname }} {{ $ticket->lname }}</p>
                         </div>
 
                         <!-- Action Buttons - Positioned on the Right but Aligned with Content -->
+                        
+                        <!-- Chat Button -->
                         <div class="action-buttons">
-                            <button class="chat-btn">
+                            <button class="chat-btn" onclick="openChatBox('{{ $ticket->fname }} {{ $ticket->lname }}')">
                                 <i class="fa fa-comments"></i> Chat
-                            </button>
+                            </button>                           
                             <button class="remarks-btn">
                                 <i class="fa fa-pencil-alt"></i> Remarks
                             </button>
@@ -124,6 +127,31 @@
                 @empty
                 <p class="empty-message">No tasks assigned to you at this time.</p>
                 @endforelse
+            </div>
+            
+            <!-- Chatbox -->
+            <div id="chatbox" class="chatbox hidden">
+                <div class="chatbox-header">
+                    <h3 id="chatbox-employee-name">Chat</h3>
+                    <button class="close-btn" onclick="closeChatBox()">×</button>
+                </div>
+                <div class="chatbox-body">
+                    <!-- Chat messages will go here -->
+                </div>
+                <div class="chatbox-footer">
+                    <input type="text" id="chat-input" placeholder="Type a message..." />
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+
+            <!-- Search Pop-Up (hidden by default) -->
+            <div class="search-popup" id="searchPopup">
+                <div class="search-popup-header">
+                    SEARCH
+                    <button class="search-popup-close" onclick="closeSearchPopup()">×</button> <!-- Close Button -->
+                </div>
+                <input type="text" class="search-popup-input" placeholder="Enter your query here...">
+                <button class="search-popup-submit">Search</button>
             </div>
 
             <!-- Menu (hidden by default) -->
