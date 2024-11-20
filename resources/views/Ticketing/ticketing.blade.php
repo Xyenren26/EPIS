@@ -177,7 +177,7 @@
                                 <div class="support-details-field">
                                     <label for="technicalSupport">Technical Support By:</label>
                                     <select id="technicalSupport" name="technicalSupport" required>
-                                        <option value="" disabled selected>Generate Technical Support</option>
+                                        <option value="" disabled selected>Select Technical Support</option>
                                         <!-- Loop through techSupport and populate the dropdown -->
                                         @foreach($techSupport as $support)
                                             <option value="{{ $support->EmployeeID }}">{{ $support->FirstName }} {{ $support->LastName }}</option>

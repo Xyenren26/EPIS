@@ -349,6 +349,24 @@ body::before {
     transition: color 0.3s ease; /* Smooth transition for icon color */
 }
 
+.icon-button.export{
+    padding: 10px 20px;
+    border: 2px solid orange; /* Stroke color */
+    background-color: transparent; /* No fill color */
+    color: orange; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* Flex to align icon and text */
+    align-items: left; /* Center vertically */
+    gap: 5px; /* Space between icon and text */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.icon-button.export:hover {
+    background-color: orange; /* Fill color on hover */
+    color: white; /* Text color on hover */
+}
+
 /* Employee List Header */
 .employee-list-header {
     display: flex;
@@ -544,4 +562,99 @@ h2 {
 .void-button:hover {
     background-color: #ffcccc; /* Light red background on hover */
     color: #d10000; /* Dark red text on hover */
+}
+
+
+/* Popup Styling */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid #003067;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 1000;
+    display: none;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content {
+    position: relative;
+}
+
+.popup-content h3 {
+    margin-top: 0;
+    color: #003067;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #003067;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    border: 2px solid #003067;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 14px;
+    background: none;
+}
+
+.search-submit-btn {
+    border: 2px solid #003067;
+    background-color: #003067;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-submit-btn:hover {
+    background-color: transparent;
+    color: #003067;
+}
+
+/* Export Popup Buttons */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.export-option-btn {
+    border: 2px solid orange;
+    background: orange;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.export-option-btn:hover {
+    background: transparent;
+    color: orange;
 }

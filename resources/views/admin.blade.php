@@ -86,16 +86,41 @@
                             <i class="fas fa-pending"></i> 
                             PENDING
                         </button>
-                        <button class="icon-button">
+                        <button class="icon-button" onclick="togglePopup()" >
                             <i class="fas fa-ticket-search"></i> 
                             SEARCH
                         </button>
-                        <button class="icon-button">
+                        <button class="icon-button export" onclick="toggleExportPopup()">
                             <i class="fas fa-check-export"></i> 
                             EXPORT
                         </button>
                     </div>
                 </div>
+
+                <!-- Search Popup -->
+                <div id="search" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup('search')">×</span>
+                        <h3>Search</h3>
+                        <div class="input-container">
+                            <input type="text" class="search-input" placeholder="Enter search query">
+                            <button class="search-submit-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Popup -->
+                <div id="exportPopup" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup('exportPopup')">×</span>
+                        <h3>Export</h3>
+                        <div class="button-container">
+                            <button class="export-option-btn">Export to CSV</button>
+                            <button class="export-option-btn">Export to Excel</button>
+                        </div>
+                    </div>
+                </div>
+
 
                 
             <!-- Active Accounts Section -->

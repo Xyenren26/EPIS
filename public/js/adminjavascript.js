@@ -117,4 +117,14 @@ function voidAccount(employeeID) {
     }
 }
 
+function togglePopup() {
+    document.getElementById("search").style.display = "block";
+}
 
+function toggleExportPopup() {
+    document.getElementById("exportPopup").style.display = "block";
+}
+
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = "none";
+}
