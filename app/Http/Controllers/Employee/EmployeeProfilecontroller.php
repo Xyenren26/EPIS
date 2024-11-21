@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Employee;
 use App\Http\Controllers\Controller; 
 use App\Models\AccountTable; // Import the AccountTable model
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash; // Import the Hash facade
 use Illuminate\Http\Request;
 
 class EmployeeProfileController extends Controller
@@ -88,4 +89,50 @@ class EmployeeProfileController extends Controller
         // Redirect back with an error message if no valid file is uploaded
         return redirect()->route('employee.profile.show')->with('error', 'Failed to upload profile picture. Please try again.');
     }
+    public function changePassword(Request $request)
+    {
+        // Get the user ID from the session
+        $userId = session('user_id');
+        
+        // Check if the session contains the user ID
+        if (!$userId) {
+            return back()->withErrors(['error' => 'Session expired. Please log in again.']);
+        }
+        
+        // Validate the input
+        $request->validate([
+            'oldPassword' => 'required',
+            'newPassword' => [
+                'required',
+                'min:8',
+                'confirmed', // Ensure confirmPassword matches newPassword
+                'regex:/[A-Z]/', // At least one uppercase
+                'regex:/[a-z]/', // At least one lowercase
+                'regex:/[0-9]/', // At least one number
+                'regex:/[@$!%*?&#]/', // At least one special character
+            ],
+        ], [
+            'newPassword.regex' => 'Password must include uppercase, lowercase, number, and special character.',
+            'newPassword.confirmed' => 'New password and confirmation do not match.',
+        ]);
+    
+        // Fetch the user from the database
+        $user = AccountTable::find($userId);
+        if (!$user) {
+            return back()->withErrors(['error' => 'User not found.']);
+        }
+        
+        // Verify the old password
+        if (!Hash::check($request->oldPassword, $user->Password)) {
+            return back()->withErrors(['oldPassword' => 'The provided old password does not match our records.']);
+        }
+    
+        // Update the password
+        $user->Password = Hash::make($request->newPassword);
+        $user->save();
+        
+        // Return success response
+        return back()->with('success', 'Password changed successfully.');
+    }
 }
+

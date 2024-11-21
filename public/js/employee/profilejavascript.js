@@ -163,3 +163,37 @@ function saveImage() {
     document.getElementById('imageUploadForm').submit();
 }
 
+
+
+function showChangePasswordSection() {
+    // Hide the profile info section
+    document.getElementById('profileInfo').style.display = 'none';
+    
+    // Show the change password section
+    document.getElementById('changePasswordSection').style.display = 'block';
+}
+
+document.getElementById('changePasswordForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const oldPassword = document.getElementById('oldPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    // Regex for password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (!passwordRegex.test(newPassword)) {
+        alert("New password does not meet the criteria!");
+        return;
+    }
+
+    if (newPassword !== confirmPassword) {
+        alert("New password and confirmation do not match!");
+        return;
+    }
+
+    // Submit form after validation
+    this.submit();
+});
+

@@ -52,38 +52,11 @@ body::before {
     content: '\2630'; /* Hamburger icon */
 }
 
-/* Search styles */
-.search-container {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.search-input {
-    flex-grow: 1; /* Take up available space */
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 3px; /* Rounded corners */
-    margin-right: 5px; /* Space between input and button */
-    width: 130px; /* Adjust width */
-}
-
-.search-btn {
-    background-color: #003067; /* Color background */
-    color: white; /* White text */
-    border: none;
-    padding: 6px 10px; /* Padding */
-    cursor: pointer;
-    border-radius: 3px; /* Rounded corners */
-}
-
 /* Add margin to sidebar elements */
 .sidebar-header {
     margin-bottom: 15px; /* Space below minimize button */
 }
 
-.search-container {
-    margin-bottom: 15px; /* Space below search bar */
-}
 
 /* Navigation styles */
 .nav-links {
@@ -373,6 +346,95 @@ label {
     margin-top: 5px; /* Space between image and label */
     color: #003067; /* Label color */
     font-size: 16px; /* Increase font size for the label */
+}
+
+/* General styling for the change password section */
+.change-password-section {
+    margin-top: 20px;
+}
+
+/* Heading styling */
+.change-password-heading {
+    color: #003067;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Styling for the form groups (spacing between each input and label) */
+.change-password-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+.form-label {
+    color: #003067;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block; /* Ensure label appears above the input */
+}
+
+/* Styling for the password input fields */
+.form-control {
+    width: 100%; /* Ensure inputs take full width of the container */
+    padding: 10px;
+    border: 1px solid #003067;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px; /* Add spacing between fields */
+}
+
+/* Styling for the new password container (input and requirements) */
+.new-password-container {
+    width: 100%; /* Ensure container takes full width */
+}
+
+/* Styling for the password requirements text */
+.password-requirements {
+    width: 50%;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #003067;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: left; /* Align text to the left */
+}
+
+/* Optional: Add padding to the form section for better spacing */
+.change-password-form {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+/* Styling for error messages */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Optional: Styling for form fields with errors */
+.form-group input:invalid {
+    border-color: red;
+}
+
+/* Styling for the button */
+.change-password-btn {
+    color: #003067;
+    border: 1px solid #003067;
+    background: transparent;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.change-password-btn:hover {
+    color: white;
+    background-color: #003067;
 }
 
 /* Modal background and content */

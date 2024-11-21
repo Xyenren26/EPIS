@@ -15,10 +15,6 @@
             <div class="sidebar-header">
                 <button class="minimize-btn" onclick="toggleSidebar()"></button>
             </div>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button>
-            </div>
             <div class="nav-links">
                 <div class="nav-item">
                     <a href="/employee/home" class="nav-link">

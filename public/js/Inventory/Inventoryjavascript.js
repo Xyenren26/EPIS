@@ -78,3 +78,18 @@ function openExportPopup() {
 function closePopup(popupId) {
     document.getElementById(popupId).style.display = "none";
 }
+
+// Open the popup
+function openPopup(popupId) {
+    document.getElementById(popupId).style.display = 'flex';
+}
+
+// Close the popup
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
+
+// Attach event listener for the "New" button
+document.querySelector('.action-btn').addEventListener('click', function () {
+    openPopup('formPopup');
+});

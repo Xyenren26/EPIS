@@ -466,3 +466,167 @@ body::before {
     background: transparent;
     color: orange;
 }
+
+/* Popup Container */
+.form-popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup Content */
+.form-popup-content {
+    background-color: white;
+    border: 2px solid #003067; /* Stroke color */
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Close Button */
+.form-popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #003067;
+}
+
+/* Form Container */
+.form-popup-form-container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.form-popup-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-popup-header .form-popup-logo img {
+    width: 80px;
+}
+
+.form-popup-header h1 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.form-popup-header .form-popup-form-info {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Form Section */
+.form-popup-section {
+    margin-bottom: 20px;
+}
+
+/* Input Group */
+.form-popup-input-group {
+    margin-bottom: 10px;
+}
+
+.form-popup-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-popup-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Button Styling */
+.form-popup-button {
+    width: 100%;
+    padding: 8px;
+    background: #007BFF;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-popup-button:hover {
+    background: #0056b3;
+}
+
+/* Table Styling */
+.form-popup-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.form-popup-table th,
+.form-popup-table td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+}
+
+.form-popup-table-header {
+    text-align: center;
+    font-weight: bold;
+    background-color: #f4f4f4;
+}
+
+/* Checkbox and Radio Groups */
+.form-popup-checkbox-group,
+.form-popup-radio-group {
+    margin-bottom: 10px;
+}
+
+.form-popup-checkbox-group label,
+.form-popup-radio-group label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Rating Section */
+.form-popup-rating-section {
+    margin-top: 20px;
+}
+
+/* Acknowledgment Section */
+.form-popup-acknowledgement-section {
+    margin-top: 30px;
+}
+
+.form-popup-acknowledgement-section h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.form-popup-acknowledgement-section table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form-popup-acknowledgement-section td {
+    padding: 10px;
+}

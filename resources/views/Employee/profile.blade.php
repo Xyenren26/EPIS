@@ -15,10 +15,6 @@
             <div class="sidebar-header">
                 <button class="minimize-btn" onclick="toggleSidebar()"></button> <!-- Hamburger icon for minimize button -->
             </div>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
-            </div>
             <div class="nav-links">
                 <div class="nav-item">
                     <a href="/employee/home" class="nav-link">
@@ -142,7 +138,7 @@
 
             <!-- Security Information Section -->
             <div id="securityInfo" style="display: none; margin-top: 20px;">
-                <div class="profile-info">
+                <div class="profile-info" id="profileInfo">
                     <div class="form-group row">
                         <div class="form-item">
                             <label for="employeeId">Employee ID:</label>
@@ -163,16 +159,52 @@
                             <input type="text" id="accountType" name="accountType" value="{{ $account->AccountType }}" readonly />
                         </div>
                     </div>
+                    <!-- Display the error message if the old password is incorrect -->
+                    @if ($errors->has('oldPassword'))
+                        <div class="error-message">
+                            <strong>{{ $errors->first('oldPassword') }}</strong>
+                        </div>
+                    @endif
 
-                    <!--Change Password and Remove Account Button -->
+                    <!-- Change Password and Remove Account Button -->
                     <div class="action-button">
-                        <button class="edit-button" id="edit-button">
-                            <i class="fas fa-edit"></i> CHANGE PASSWORD
+                        <button class="edit-button" onclick="showChangePasswordSection()">
+                            <i class="fas fa-key"></i> CHANGE PASSWORD
                         </button>
                         <button class="remove-button">
                             <i class="fas fa-key"></i> REMOVE ACCOUNT
                         </button>
-                    </div>   
+                    </div>
+                </div>
+
+                <!-- Change Password Section (hidden by default) -->
+                <div id="changePasswordSection" class="change-password-section" style="display: none;">
+                    <h2 class="change-password-heading">CHANGE PASSWORD</h2>
+                    <form id="changePasswordForm" action="{{ route('employee.profile.changePassword') }}" method="POST" class="change-password-form">
+                        @csrf
+                        <div class="form-group">
+                            <label for="oldPassword" class="form-label">Old Password:</label>
+                            <input type="password" id="oldPassword" name="oldPassword" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword" class="form-label">New Password:</label>
+                            <div class="new-password-container">
+                                <input type="password" id="newPassword" name="newPassword" class="form-control" required />
+                                <div class="password-requirements">
+                                    <p>Password must be at least 8 characters, <br>
+                                    contain uppercase, lowercase, a number, <br>
+                                    and a special character.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">Confirm Password:</label>
+                            <input type="password" id="confirmPassword" name="newPassword_confirmation" class="form-control" required />
+                        </div>
+                        <button type="submit" class="change-password-btn">
+                            Change Password
+                        </button>
+                    </form>
                 </div>
             </div>
 

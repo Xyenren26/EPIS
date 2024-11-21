@@ -89,5 +89,6 @@ Route::middleware(['auth', \App\Http\Middleware\UpdateLastActivity::class])->gro
     Route::get('/employee/profile', [EmployeeProfileController::class, 'showEmployeeProfile'])->name('employee.profile.show');
     Route::put('/employee/profile/{employeeID}', [EmployeeProfileController::class, 'EmployeeUpdate'])->name('employee.profile.update');
     Route::post('/employee/update-profile-picture', [EmployeeProfileController::class, 'EmployeeUpdateProfilePicture'])->name('employee.update.profile.picture');
+    Route::post('/employee/profile/change-password', [EmployeeProfileController::class, 'changePassword'])->name('employee.profile.changePassword');
     Route::get('/employee/contact', [EmployeeContactController::class, 'showEmployeeContact'])->name('employee.contact');
 });

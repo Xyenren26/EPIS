@@ -14,10 +14,6 @@
             <div class="sidebar-header">
                 <button class="minimize-btn" onclick="toggleSidebar()"></button> <!-- Hamburger icon for minimize button -->
             </div>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search..." />
-                <button class="search-btn">🔍</button> <!-- Search button -->
-            </div>
             <div class="nav-links">
                 <div class="nav-item">
                     <a href="/employee/home" class="nav-link">
