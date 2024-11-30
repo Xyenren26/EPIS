@@ -191,7 +191,7 @@ body::before {
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space between elements */
+    justify-content: space-between; /* Space out elements horizontally */
     margin-bottom: 20px; /* Space below header */
 }
 
@@ -209,10 +209,21 @@ body::before {
     cursor: pointer; /* Pointer cursor */
 }
 
+.menu-logo-container {
+    display: flex;
+    align-items: center; /* Align logo and menu button vertically */
+    gap: 10px; /* Space between menu button and logo */
+}
+
+.pasig-logo {
+    width: 150px; /* Set a smaller logo size */
+    height: auto; /* Maintain aspect ratio */
+}
+
 .menu {
     position: absolute; /* Position it over the content */
     top: 60px; /* Adjust position based on header height */
-    right: 20px; /* Align to the right */
+    right: 110px; /* Align to the right */
     background-color: white; /* Background color */
     border: 1px solid #ccc; /* Border */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow */
@@ -383,7 +394,7 @@ a{
     display: flex;
     gap: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #003067;
     border-radius: 8px;
     width: auto; /* Adjust width as needed */
     max-width: 900px; /* Set a max-width if desired */
@@ -393,7 +404,7 @@ a{
 /* Accordion Container with Light Background */
 .accordion-container {
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #003067;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -417,15 +428,13 @@ a{
 
 /* Accordion Header Styling */
 .accordion h3 {
-    background-color: #003067; /* Light blue header */
-    color: white; /* Darker blue text */
+    background-color: white; /* Light blue header */
+    border: 1px solid #003067;
+    color: #003067; /* Darker blue text */
     cursor: pointer;
     padding: 20px;
     margin: 0;
     font-size: 1.2em;
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
     border-radius: 8px 8px 0 0; /* Rounded top corners */
     transition: background-color 0.3s;
     display: flex;
@@ -479,7 +488,7 @@ a{
     display: flex;
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
-    background-color: #f0f4f8; /* Slightly darker background */
+    background-color: #003067; /* Slightly darker background */
     border: 1px solid #ddd; /* Subtle border */
     border-radius: 8px; /* Rounded corners */
 	width:auto;

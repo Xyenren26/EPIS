@@ -74,13 +74,14 @@
                 <button class="back-btn" onclick="goBack()">
                     <i class="fas fa-arrow-left"></i> 
                 </button>
-                <h1>MANAGEMENT INFORMATION SYSTEM</h1>
+                <h1>ADMINISTRATOR MANAGEMENT</h1>
                 <button class="menu-btn" onclick="toggleMenu()">⋮</button>
             </div>
             <!-- Employee List Section -->
             <div class="employee-list">
                 <div class="employee-list-header">
-                    <h2>EMPLOYEE LIST</h2>
+                    <h2>EMPLOYEE MANAGEMENT</h2>
+
                     <div class="buttons">
                         <button class="icon-button" onclick="openPendingModal()">
                             <i class="fas fa-pending"></i> 
@@ -95,6 +96,16 @@
                             EXPORT
                         </button>
                     </div>
+                </div>
+                <div class="sort-by-container">
+                    <label for="sort-by">Sort By:</label>
+                    <select id="sort-by" class="sort-dropdown">
+                        <option value="recent">By Recent</option>
+                        <option value="employee">By Employee</option>
+                        <option value="technical-support">By Technical Support</option>
+                        <option value="employee-id">By Employee ID</option>
+                        <option value="name">By Name</option>
+                    </select>
                 </div>
 
                 <!-- Search Popup -->
@@ -124,28 +135,40 @@
 
                 
             <!-- Active Accounts Section -->
-            @if($activeAccounts->isNotEmpty())
-                @foreach($activeAccounts as $account)
-                    <div class="employee-container">
-                        <div class="employee-photo">
-                            <img src="data:image/jpeg;base64,{{ base64_encode($account->ProfilePicture) }}" alt="Profile Picture">
-                        </div>
-                        <div class="employee-info">
-                            <h3>{{ $account->FirstName }} {{ $account->LastName }}</h3>
-                            <p>ID: {{ $account->EmployeeID }}</p>
-                            <p>User: {{ $account->Username }}</p>
-                            <p>Account Type: {{ $account->AccountType }}</p>
-                            <p>Status: {{ $account->status }}</p>
-                            <p>Time In: {{ $account->time_in ?? 'Not logged in' }}</p>
-                            <p>Time out: {{ $account->time_out ?? 'Not logged out' }}</p>
-                        </div>
-                        <button class="view-btn">View</button>
+        @if($activeAccounts->isNotEmpty())
+            @foreach($activeAccounts as $account)
+                <div class="employee-container">
+                    <div class="employee-photo">
+                        <img src="data:image/jpeg;base64,{{ base64_encode($account->ProfilePicture) }}" alt="Profile Picture">
                     </div>
-                @endforeach
-            @else
-                <p>No active employee data available.</p>
-            @endif
-        </div>
+                    <div class="employee-info">
+                        <h3>{{ $account->FirstName }} {{ $account->LastName }}</h3>
+                        <p>ID: {{ $account->EmployeeID }}</p>
+                        <p>User: {{ $account->Username }}</p>
+                        <p>Account Type: {{ $account->AccountType }}</p>
+                        <p>Time In: {{ $account->time_in ?? 'Not logged in' }}</p>
+                        <p>Time Out: {{ $account->time_out ?? 'Not logged out' }}</p>
+                    </div>
+                    <button class="view-btn"
+                            onclick="showEmployeeDetails({
+                                FirstName: '{{ $account->FirstName }}',
+                                LastName: '{{ $account->LastName }}',
+                                EmployeeID: '{{ $account->EmployeeID }}',
+                                AccountType: '{{ $account->AccountType }}',
+                                Address: '{{ $account->Address }}',
+                                Email: '{{ $account->Email }}',
+                                PhoneNumber: '{{ $account->PhoneNumber }}',
+                                Username: '{{ $account->Username }}',
+                            })">
+                        View
+                    </button>
+                </div>
+            @endforeach
+        @else
+            <p>No active employee data available.</p>
+        @endif
+
+            </div>
             <!-- Pending Modal -->
             <div id="pendingModal" class="modal">
                 <div class="modal-content">
@@ -170,6 +193,45 @@
                         </li>
                         @endforeach
                     </ul>
+                </div>
+            </div>
+            
+            <!-- Employee Details Modal -->
+            <div id="employeeDetailsModal" class="modal-container" style="display: none;">
+                <div class="modal-content">
+                    <button class="modal-close-btn" onclick="closePopup('employeeDetailsModal')">Close</button>
+                    <h2>Employee Details</h2>
+                    
+                    <div class="modal-details">
+                        <div>
+                            <label>Name:</label>
+                            <span class="modal-data-box" id="employeeName"></span>
+                            <label>Employee ID:</label>
+                            <span class="modal-data-box" id="employeeID"></span>
+                        </div>
+                        <div>
+                            <label>Account Type:</label>
+                            <span class="modal-data-box" id="employeeAccountType"></span>
+                            <label>Username:</label>
+                            <span class="modal-data-box" id="employeeUsername"></span>
+                        </div>
+                        <div>
+                            <label>Address:</label>
+                            <span class="modal-data-box" id="employeeAddress"></span>
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            <span class="modal-data-box" id="employeeEmail"></span>
+                            <label>Phone Number:</label>
+                            <span class="modal-data-box" id="employeePhoneNumber"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button class="modal-icon-button" onclick="markOnLeave()">On Leave</button>
+                        <button class="modal-icon-button" onclick="editEmployee()">Edit</button>
+                        <button class="modal-icon-button modal-remove" onclick="removeEmployee()">Remove</button>
+                    </div>
                 </div>
             </div>
 

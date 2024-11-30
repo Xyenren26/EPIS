@@ -22,6 +22,8 @@ class TicketingTable extends Model
         'fname',         // Ensure column names match those in the database
         'lname',
         'Department',
+        'EmployeeID',
+        'Category',
         'Concern',
         'Remarks',
         'Technical_Supported',

@@ -178,6 +178,19 @@
         <button class="search-popup-submit">Search</button>
     </div>
 
+    <!-- Menu (hidden by default) -->
+    <div class="menu" id="menu" style="display: none;">
+        <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
+        </ul>
+    </div>
+
+        <!-- Hidden Logout Form -->
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
     <script src="js/contactjavascript.js"></script>
 </body>
 </html>

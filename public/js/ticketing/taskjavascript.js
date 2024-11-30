@@ -85,3 +85,43 @@ function closeChatBox() {
     // Hide the chatbox
     chatbox.classList.add('hidden');
 }
+
+// Show the remarks popup
+function showRemarksPopup(controlNo, concern) {
+    document.getElementById('controlNo').textContent = controlNo;
+    document.querySelector('.concern-content').textContent = concern;
+    document.getElementById('remarksPopup').style.display = 'flex';
+}
+
+// Close the remarks popup
+function closeRemarksPopup() {
+    document.getElementById('remarksPopup').style.display = 'none';
+}
+
+// Show the Follow-Up popup
+function showFollowUpPopup(name, id, department) {
+    document.getElementById('employeeName').textContent = name;
+    document.getElementById('employeeID').textContent = id;
+    document.getElementById('employeeDepartment').textContent = department;
+
+    document.getElementById('followUpPopup').style.display = 'flex';
+}
+
+// Close the Follow-Up popup
+function closeFollowUpPopup() {
+    document.getElementById('followUpPopup').style.display = 'none';
+}
+
+// Submit Follow-Up Data
+function submitFollowUp() {
+    const followUpDetails = document.getElementById('followUpInput').value;
+
+    if (followUpDetails.trim() === '') {
+        alert('Please enter follow-up details before submitting.');
+        return;
+    }
+
+    // Perform form submission or AJAX request here
+    alert('Follow-up submitted successfully!');
+    closeFollowUpPopup();
+}

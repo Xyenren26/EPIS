@@ -59,6 +59,55 @@ function toggleMenu() {
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block'; // Toggle visibility
 }
 
+function openConfirmationModal() {
+    // Collect form data
+    const firstName = document.getElementById('first-name').value;
+    const lastName = document.getElementById('last-name').value;
+    const department = document.getElementById('department').value;
+    const concern = document.getElementById('concern').value;
+    const category = document.getElementById('category').value;
+    const employeeId = document.getElementById('employeeId').value;
+
+    // Check if all fields are filled
+    if (!firstName || !lastName || !department || !concern || !category || !employeeId || !technicalSupport || !timeIn) {
+        // Show error message if any field is empty
+        document.getElementById('errorMessage').style.display = 'block';
+        return; // Stop the function if any field is empty
+    }
+
+    // Hide error message if all fields are filled
+    document.getElementById('errorMessage').style.display = 'none';
+
+    // Populate confirmation details
+    document.getElementById('first-name-data').textContent = firstName;
+    document.getElementById('last-name-data').textContent = lastName;
+    document.getElementById('department-data').textContent = department;
+    document.getElementById('concern-data').textContent = concern;
+    document.getElementById('category-data').textContent = category;
+    document.getElementById('employee-id-data').textContent = employeeId;
+    // Show the modal
+    document.getElementById('confirmationModal').style.display = 'block';
+}
+
+function closeModal() {
+    // Hide the modal
+    document.getElementById('confirmationModal').style.display = 'none';
+}
+
+function submitForm() {
+    // Submit the form if user confirms
+    document.getElementById('ticketForm').submit();
+}
+
+
+// Add an onclick event to the submit button
+document.querySelector('.submit-btn').addEventListener('click', function(event) {
+    // Prevent form submission to show the confirmation modal
+    event.preventDefault();
+    openConfirmationModal();
+});
+
+
 function showDetailsModal(ticket) {
     // Populate modal content with ticket details
     document.getElementById('modalControlNo').innerText = ticket.control_no;

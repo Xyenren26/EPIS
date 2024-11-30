@@ -467,7 +467,7 @@ body::before {
     color: orange;
 }
 
-/* Popup Container */
+/* Style for In and Out New Form */
 .form-popup-container {
     position: fixed;
     top: 0;
@@ -629,4 +629,120 @@ body::before {
 
 .form-popup-acknowledgement-section td {
     padding: 10px;
+}
+
+/* Style for Deployment New Form */
+/* Popup Container */
+#formPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+}
+
+#formPopup .form-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust as needed */
+    max-width: 900px;
+    background: white;
+    border: 3px solid #003067; /* Stroke */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#formPopup .form-popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #003067;
+    cursor: pointer;
+}
+
+#formPopup header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #003067;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#formPopup .logo img {
+    width: 80px;
+    margin-right: 20px;
+}
+
+#formPopup .title h1 {
+    font-size: 20px;
+    color: #003067;
+    margin: 0;
+}
+
+#formPopup .title p {
+    color: #003067;
+    font-size: 14px;
+    margin: 5px 0 0;
+}
+
+#formPopup table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#formPopup th {
+    background: #003067;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #003067;
+}
+
+#formPopup td {
+    padding: 10px;
+    border: 1px solid #003067;
+}
+
+#formPopup textarea,
+#formPopup input[type="text"],
+#formPopup input[type="number"],
+#formPopup input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #003067;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#formPopup textarea {
+    resize: none;
+}
+
+#formPopup .submit-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#formPopup .submit-btn button {
+    background: #003067;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#formPopup .submit-btn button:hover {
+    background: white;
+    color: #003067;
+    border: 2px solid #003067;
 }

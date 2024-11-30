@@ -1,0 +1,171 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    position: relative;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9; /* Light gray background */
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start; /* Align contents to the top */
+    flex-direction: column; /* Stack contents vertically */
+    padding: 0; /* Add spacing around content */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/LoginImages/pasigbg.jpg'); /* Relative path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.3; /* Adjust the opacity value here */
+    z-index: -1; /* Ensure the image stays in the background */
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Slight movement from above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Reset position */
+    }
+}
+
+/* Styling for the main heading */
+.main-heading {
+    text-align: center;
+    font-size: 42px; /* Moderate font size */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 20px 15px; /* Adjust padding for better spacing */
+    font-family: 'Helvetica Neue', sans-serif; /* Clean font */
+    color: white; /* White text for contrast */
+    background: linear-gradient(90deg, #2980b9, #003067); /* Gradient background */
+    border-radius: 5px; /* Slight rounding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+    transition: transform 0.3s; /* Smooth scaling on hover */
+    width: 100%; /* Full width of the container */
+    margin-left: auto; /* Center the heading */
+    margin-right: auto; /* Center the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adding text shadow */
+}
+
+.main-heading:hover {
+    transform: scale(1.02); /* Slightly scale up on hover for effect */
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between; /* Distributes space between items */
+    align-items: center; /* Vertically center the items */
+    margin: 20px; /* Add some margin around the header */
+    width: calc(100% - 40px); /* Add space on left and right */
+    max-width: 1400px; /* Optional: limit max width of the header */
+}
+
+/* Subheading styling */
+.subheading {
+    margin: 0; /* Remove default margin */
+    font-size: 2rem; /* Adjust as necessary */
+    color: #003067; /* Set the desired color */
+}
+
+.subheading .epis,
+.subheading span {
+    color: #0318ff; /* Color for E-PIS and starting letters */
+}
+
+/* Logo styling */
+.logo {
+    width: 180px; /* Increase logo size slightly */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 20px; /* Add space between logo and the edge */
+    margin-right: 20px; /* Add space on the right side of the logo */
+}
+/* Forgot Password Styles */
+.forgot-password-container {
+    border: 2px solid #003067; /* Stroke color */
+    background-color: white; /* Fill color */
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center header and elements */
+}
+
+.forgot-password-container h2 {
+    color: #003067;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.forgot-password-container .input-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align label and input */
+}
+
+.forgot-password-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #003067;
+}
+
+.forgot-password-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #003067;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.forgot-password-container input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 80, 179, 0.2);
+}
+
+.forgot-password-container .btn {
+    display: inline-block;
+    background-color: #003067; /* Button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.forgot-password-container .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.forgot-password-container .links {
+    margin-top: 15px;
+}
+
+.forgot-password-container .links a {
+    color: #003067;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.forgot-password-container .links a:hover {
+    text-decoration: underline;
+}
+

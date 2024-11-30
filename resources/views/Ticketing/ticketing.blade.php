@@ -76,7 +76,10 @@
                     <i class="fas fa-arrow-left"></i> 
                 </button>
                 <h1>TICKETING SYSTEM</h1>
-                <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+                <div class="menu-logo-container">
+                    <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+                    <img src="{{ asset('images/LoginImages/pasiglogo.png') }}" alt="Pasig Logo" class="pasig-logo">
+                </div>
             </div>
 
             <!-- Functional Button Section -->
@@ -165,6 +168,14 @@
                                     <input type="text" id="otherConcern" name="otherConcern" placeholder="Specify your concern">
                                 </div>
 
+                                <label for="category">Category:</label>
+                                <select id="category" name="category" required>
+                                    <option value="" disabled selected>Select Category</option>
+                                    <option value="Priority">Priority</option>
+                                    <option value="Semi-Urgent">Semi-Urgent</option>
+                                    <option value="Non-Urgent">Non-Urgent</option>
+                                </select>
+                                
                                 <label for="employeeId">Employee ID:</label>
                                 <input type="text" id="employeeId" name="employeeId" required>
                             </div>
@@ -187,25 +198,60 @@
                                 <div class="time-container">
                                     <div class="support-details-field">
                                         <label for="timeIn">Time In:</label>
-                                        <input type="datetime-local" id="timeIn" name="timeIn" required>
-                                    </div>
-                                    <div class="support-details-field">
-                                        <label for="timeOut">Time Out:</label>
-                                        <input type="datetime-local" id="timeOut" name="timeOut">
+                                        <input type="datetime-local" id="timeIn" name="timeIn" required readonly>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
 
+                        <!-- Error message container -->
+                        <div id="errorMessage" style="color: red; display: none; text-align:center; margin-top: 10px;">
+                            <p>Please fill in all fields.</p>
+                        </div>
+
                         <!-- Submit Button -->
                         <div class="form-actions">
-                            <button type="submit" class="submit-btn">Submit</button>
+                            <button type="button" class="submit-btn">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmation Details</h2>
+            <div id="confirmationDetails">
+                <div class="detail-row">
+                    <label for="first-name">First Name:</label>
+                    <div class="data-box" id="first-name-data"></div>
+                    <label for="last-name">Last Name:</label>
+                    <div class="data-box" id="last-name-data"></div>
+                </div>
+                <div class="detail-row">
+                    <label for="department">Department:</label>
+                    <div class="data-box" id="department-data"></div>
+                </div>
+                <div class="detail-row">
+                    <label for="concern">Concern:</label>
+                    <div class="data-box" id="concern-data"></div>
+                </div>
+                <div class="detail-row">
+                    <label for="category">Category:</label>
+                    <div class="data-box" id="category-data"></div>
+                    <label for="employeeId">Employee ID:</label>
+                    <div class="data-box" id="employee-id-data"></div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" onclick="submitForm()">Submit</button>
+                <button type="button" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <!-- Export Popup -->

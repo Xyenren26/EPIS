@@ -11,10 +11,11 @@
 </head>
 <body>
     
-    <h1 class="main-heading">WELCOME to MIS - TECHNICAL SUPPORT DIVISION</h1>
+    <h1 class="main-heading">WELCOME TO MANAGMENT INFORMATION SYSTEM OFFICE <br>
+                            TECHNICAL SUPPORT DIVISION</h1>
     <div class="header">
         <h1 class="subheading">
-            <span class="epis">E</span>-<span>PIS</span>: <span>E</span>nhance <span>P</span>asig <span>I</span>nventory <span>S</span>ystem
+            <span class="epis">E</span><span>IMS</span>: <span>E</span>lectronic <span>I</span>nventory <span>M</span>anagement <span>S</span>ystem
         </h1>
         <img src="images/LoginImages/pasiglogo.png" alt="Pasig Logo" class="logo">
     </div>

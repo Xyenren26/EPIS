@@ -74,7 +74,10 @@
                     <i class="fas fa-arrow-left"></i> 
                 </button> <!-- Back button -->
                 <h1>TASK MANAGEMENT</h1>
-                <button class="menu-btn" onclick="toggleMenu()">⋮</button> <!-- Three vertical dots -->
+                <div class="menu-logo-container">
+                    <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+                    <img src="{{ asset('images/LoginImages/pasiglogo.png') }}" alt="Pasig Logo" class="pasig-logo">
+                </div>
             </div>
 
             <!-- Functional Button Section -->
@@ -92,7 +95,7 @@
                             <span>TICKETING</span>
                         </button>
                     </a>
-                    <a href="/task">
+                    <a href="/ticketing/task">
                         <button class="action-btn">
                             <i class="fas fa-bell"></i>
                             <span>TASK</span>
@@ -108,6 +111,7 @@
                         <h3>#{{ $ticket->control_no }}</h3>
                         <div class="task-info">
                             <p><strong>Time In:</strong> {{ $ticket->TimeIn }}</p>
+                            <p><strong>Catergory:</strong> {{ $ticket->Category }}</p>
                             <p><strong>Department:</strong> {{ $ticket->Department }}</p>
                             <p><strong>Issued By:</strong> {{ $ticket->fname }} {{ $ticket->lname }}</p>
                         </div>
@@ -116,10 +120,13 @@
                         
                         <!-- Chat Button -->
                         <div class="action-buttons">
+                            <button class="followup-btn" onclick="showFollowUpPopup('{{ $ticket->fname }} {{ $ticket->lname }}', '{{ $ticket->EmployeeID }}', '{{ $ticket->Department }}')">
+                                <i class="fa fa-bell"></i> Follow-Up
+                            </button>
                             <button class="chat-btn" onclick="openChatBox('{{ $ticket->fname }} {{ $ticket->lname }}')">
                                 <i class="fa fa-comments"></i> Chat
-                            </button>                           
-                            <button class="remarks-btn">
+                            </button>
+                            <button class="remarks-btn" onclick="showRemarksPopup('{{ $ticket->control_no }}', '{{ $ticket->Concern }}')">
                                 <i class="fa fa-pencil-alt"></i> Remarks
                             </button>
                         </div>
@@ -135,12 +142,69 @@
                     <h3 id="chatbox-employee-name">Chat</h3>
                     <button class="close-btn" onclick="closeChatBox()">×</button>
                 </div>
-                <div class="chatbox-body">
-                    <!-- Chat messages will go here -->
+                <div class="chatbox-body" id="chatbox-messages">
+                    <!-- Chat messages will appear here -->
+                    <p class="message user">Hello! How can I help you?</p>
+                    <p class="message agent">I need assistance with my account.</p>
                 </div>
                 <div class="chatbox-footer">
                     <input type="text" id="chat-input" placeholder="Type a message..." />
                     <button id="send-btn">Send</button>
+                </div>
+            </div>
+
+            <!-- Follow-Up and Remarks Pop-Up -->
+            <div id="remarksPopup" class="popup hidden">
+                <div class="popup-header">
+                    <h3>REMARKS</h3>
+                    <button class="popup-close" onclick="closeRemarksPopup()">×</button> <!-- Close button -->
+                </div>
+                <div class="popup-body">
+                    <p><strong>Control No.:</strong> <span id="controlNo" class="control-no"></span></p>
+                    <div class="concern-box">
+                        <p><strong>Concern:</strong></p>
+                        <div class="concern-content">Data for concern will be shown here.</div>
+                    </div>
+                    <div class="remarks-box">
+                        <p><strong>Remarks:</strong></p>
+                        <textarea class="remarks-input" placeholder="Enter your remarks here..."></textarea>
+                    </div>
+                    <div class="popup-footer">
+                        <button class="mark-done-btn">Mark as Done</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follow-Up Pop-Up -->
+            <div id="followUpPopup" class="popup hidden">
+                <div class="popup-header">
+                    <h3>FOLLOW-UP</h3>
+                    <button class="popup-close" onclick="closeFollowUpPopup()">×</button> <!-- Close button -->
+                </div>
+                <div class="popup-body">
+                    <div class="employee-details">
+                        <p><strong>Employee Name:</strong></p>
+                        <div class="input-box">
+                            <span id="employeeName">[Employee Name]</span>
+                        </div>
+                        <p><strong>Employee ID:</strong></p>
+                        <div class="input-box">
+                            <span id="employeeID">[Employee ID]</span>
+                        </div>
+                        <p><strong>Department:</strong></p>
+                        <div class="input-box">
+                            <span id="employeeDepartment">[Department]</span>
+                        </div>
+                    </div>
+
+                    <div class="follow-up-section">
+                        <p><strong>Follow-Up:</strong></p>
+                        <textarea id="followUpInput" class="input-box" placeholder="Enter your follow-up details here..."></textarea>
+                    </div>
+
+                    <div class="popup-footer">
+                        <button class="submit-btn" onclick="submitFollowUp()">Submit</button>
+                    </div>
                 </div>
             </div>
 

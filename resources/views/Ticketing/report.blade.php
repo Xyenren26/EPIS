@@ -75,7 +75,10 @@
                     <i class="fas fa-arrow-left"></i> 
                 </button>
                 <h1>REPORT AND MONITORING</h1>
-                <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+                <div class="menu-logo-container">
+                    <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+                    <img src="images/LoginImages/pasiglogo.png" alt="Pasig Logo" class="pasig-logo">
+                </div>
             </div>
 
             <!-- Functional Button Section -->
@@ -168,6 +171,19 @@
     <input type="text" class="search-popup-input" placeholder="Enter your query here...">
     <button class="search-popup-submit">Search</button>
 </div>
+
+<!-- Menu (hidden by default) -->
+<div class="menu" id="menu" style="display: none;">
+    <ul>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a></li>
+    </ul>
+</div>
+
+<!-- Hidden Logout Form -->
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form>
 
     <script src="../js/ticketing/reportjavascript.js"></script>
 </body>

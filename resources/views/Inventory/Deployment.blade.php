@@ -78,13 +78,141 @@
 
                 <!-- Action Buttons and Logo -->
                 <div class="action-buttons">
-                    <button class="action-btn">New</button>
-                    <button class="action-btn">Search</button>
-                    <button class="action-btn">Export</button>
+                    <button class="action-btn" onclick="openFormPopup()">New</button>
+                    <button class="action-btn" onclick="openSearch()">Search</button>
+                    <button class="action-btn export-btn" onclick="openExportPopup()">Export</button>
                     <img src="images/LoginImages/pasiglogo.png" alt="Pasig Logo" class="pasig-logo">
                 </div>
-            </div>
 
+                <!-- Form Popup -->
+<div id="formPopup" class="form-popup-container">
+    <div class="form-popup-content">
+        <span class="form-popup-close-btn" onclick="closePopup('formPopup')">×</span>
+        <div class="form-container">
+            <header>
+                <div class="logo">
+                    <img src="images/LoginImages/pasiglogo.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <h1>IT EQUIPMENT / SOFTWARE / I.S. ACKNOWLEDGEMENT RECEIPT FORM</h1>
+                    <p>Management Information System Office</p>
+                </div>
+            </header>
+            <form>
+                <table>
+                    <tr>
+                        <th colspan="4">Purpose</th>
+                        <td colspan="4">
+                            <textarea name="purpose" placeholder="Enter purpose here..." rows="2"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Control Number:</th>
+                        <td colspan="3"><input type="text" placeholder="Enter Control Number"></td>
+                        <th>Status:</th>
+                        <td><input type="checkbox"> New</td>
+                        <td><input type="checkbox"> Used</td>
+                    </tr>
+                    <tr>
+                        <th>Components:</th>
+                        <td><input type="checkbox"> CPU</td>
+                        <td><input type="checkbox"> Monitor</td>
+                        <td><input type="checkbox"> Printer</td>
+                        <td><input type="checkbox"> UPS</td>
+                        <td><input type="checkbox"> Switch</td>
+                        <td><input type="checkbox"> Keyboard</td>
+                        <td><input type="checkbox"> Mouse</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Software / I.S.</th>
+                        <td colspan="6">
+                            <input type="checkbox"> Google Workspace
+                            <input type="checkbox"> MS Office
+                            <input type="checkbox"> Others
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Brand/Name</th>
+                        <td colspan="7"><input type="text" placeholder="Enter brand/model"></td>
+                    </tr>
+                    <tr>
+                        <th>Specification</th>
+                        <td colspan="7"><textarea placeholder="Enter specifications"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <th>Serial Number</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="description" placeholder="Enter description"></td>
+                        <td><input type="text" name="serial_number" placeholder="Enter serial number"></td>
+                        <td><input type="number" name="quantity" placeholder="Enter quantity"></td>
+                    </tr>
+                    <tr>
+                        <th>Received By</th>
+                        <td>
+                            <input type="text" name="received_by" placeholder="Enter Name">
+                            <br>
+                            <span>Signature over printed name</span>
+                        </td>
+                        <th>Issued By</th>
+                        <td>
+                            <input type="text" name="issued_by" placeholder="Enter Name">
+                            <br>
+                            <span>Signature over printed name</span>
+                        </td>
+                        <th>Noted By</th>
+                        <td>
+                            <input type="text" name="noted_by" placeholder="Enter Name">
+                            <br>
+                            <span>Signature over printed name</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><input type="date" name="received_date"></td>
+                        <th>Date</th>
+                        <td><input type="date" name="issued_date"></td>
+                        <th>Date</th>
+                        <td><input type="date" name="noted_date"></td>
+                    </tr>
+                </table>
+                <div class="submit-btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+                <!-- Search Popup -->
+                <div id="search" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup('search')">×</span>
+                        <h3>Search</h3>
+                        <div class="input-container">
+                            <input type="text" class="search-input" placeholder="Enter search query">
+                            <button class="search-submit-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export Popup -->
+                <div id="exportPopup" class="popup" style="display: none;">
+                    <div class="popup-content">
+                        <span class="close-btn" onclick="closePopup('exportPopup')">×</span>
+                        <h3>Export</h3>
+                        <div class="button-container">
+                            <button class="export-option-btn">Export to CSV</button>
+                            <button class="export-option-btn">Export to Excel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
             <!-- Search Pop-Up (hidden by default) -->
             <div class="search-popup" id="searchPopup">
                 <div class="search-popup-header">

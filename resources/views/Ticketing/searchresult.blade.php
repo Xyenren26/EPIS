@@ -117,8 +117,8 @@
 
 <!-- Ticket Details Modal -->
 <div id="detailsModal" class="details-modal" style="display: none">
+    <span class="close-btn" onclick="closeDetailsModal()">×</span>
     <div class="modal-content">
-        <span class="close-btn" onclick="closeDetailsModal()">×</span>
         <h2>Ticket Details: <span id="modalStatus" class="status"></span></h2>
         <p><strong class="red">Control No:</strong> <span id="modalControlNo"></span></p>
         

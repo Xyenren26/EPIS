@@ -38,11 +38,11 @@ class TicketController extends Controller
         'first-name' => 'required|string',
         'last-name' => 'required|string',
         'department' => 'required|string',
+        'category' => 'required|string',
         'concern' => 'required|string',
         'employeeId' => 'required|string',
         'technicalSupport' => 'required|string',
         'timeIn' => 'required|date',
-        'timeOut' => 'nullable|date',
         'otherConcern' => 'nullable|string',  // Ensure that otherConcern is optional
     ]);
 
@@ -68,12 +68,12 @@ class TicketController extends Controller
         'fname' => $validated['first-name'],
         'lname' => $validated['last-name'],
         'Department' => $validated['department'],
+        'Category' => $validated['category'],
         'Concern' => $concern,  // Save the concern, whether it's the selected option or the specified 'other'
         'EmployeeID' => $validated['employeeId'],
         'Technical_Supported' => $validated['technicalSupport'],
         'TimeIn' => $validated['timeIn'],
-        'TimeOut' => $validated['timeOut'],
-        'status' => 'pending',
+        'Status' => 'pending',
     ]);
 
     return redirect()->route('ticketing.ticketing')->with('success', 'Ticket has been submitted.');

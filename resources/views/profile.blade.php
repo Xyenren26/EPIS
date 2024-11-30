@@ -193,8 +193,8 @@
                         <button class="edit-button" onclick="showChangePasswordSection()">
                             <i class="fas fa-key"></i> CHANGE PASSWORD
                         </button>
-                        <button class="remove-button">
-                            <i class="fas fa-key"></i> REMOVE ACCOUNT
+                        <button class="remove-button" onclick="showRemoveAccountPopup()">
+                            <i class="fas fa-user-slash"></i> REMOVE ACCOUNT
                         </button>
                     </div>
                 </div>
@@ -227,6 +227,22 @@
                             Change Password
                         </button>
                     </form>
+                </div>
+            </div>
+
+            <!-- Remove Account Popup -->
+            <div id="removeAccountPopup" class="popup-container" style="display: none;">
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <h2 class="popup-title">Remove Account</h2>
+                        <button class="popup-close" onclick="closeRemoveAccountPopup()">×</button>
+                    </div>
+                    <p class="popup-subtitle">Enter your password to confirm:</p>
+                    <input type="password" class="popup-input" placeholder="Enter password" />
+                    <div class="popup-buttons">
+                        <button class="remove-button" onclick="confirmRemoveAccount()">Remove Account</button>
+                        <button class="cancel-button" onclick="closeRemoveAccountPopup()">Cancel</button>
+                    </div>
                 </div>
             </div>
 

@@ -229,3 +229,24 @@ document.getElementById('changePasswordForm').addEventListener('submit', functio
     this.submit();
 });
 
+// Show Remove Account Popup
+function showRemoveAccountPopup() {
+    document.getElementById("removeAccountPopup").style.display = "flex";
+}
+
+// Close Remove Account Popup
+function closeRemoveAccountPopup() {
+    document.getElementById("removeAccountPopup").style.display = "none";
+}
+
+// Confirm Remove Account
+function confirmRemoveAccount() {
+    const passwordInput = document.querySelector(".popup-input").value;
+    if (passwordInput.trim() === "") {
+        alert("Please enter your password.");
+        return;
+    }
+    // Perform account removal logic here (e.g., AJAX call)
+    alert("Account removed successfully!");
+    closeRemoveAccountPopup();
+}

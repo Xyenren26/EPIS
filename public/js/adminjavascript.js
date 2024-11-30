@@ -128,3 +128,38 @@ function toggleExportPopup() {
 function closePopup(popupId) {
     document.getElementById(popupId).style.display = "none";
 }
+
+// Function to show the employee details modal
+function showEmployeeDetails(details) {
+    document.getElementById('employeeName').innerText = `${details.FirstName} ${details.LastName}`;
+    document.getElementById('employeeID').innerText = details.EmployeeID;
+    document.getElementById('employeeAccountType').innerText = details.AccountType;
+    document.getElementById('employeeAddress').innerText = details.Address;
+    document.getElementById('employeeEmail').innerText = details.Email;
+    document.getElementById('employeePhoneNumber').innerText = details.PhoneNumber;
+    document.getElementById('employeeUsername').innerText = details.Username;
+
+    document.getElementById('employeeDetailsModal').style.display = 'block'; // Updated modal ID
+}
+
+// Function to close modal
+function closePopup(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+// Attach event listeners to "View" buttons
+document.querySelectorAll('.modal-view-btn').forEach((button, index) => { // Updated button class
+    button.addEventListener('click', () => {
+        const employeeDetails = {
+            FirstName: "{{ $account->FirstName }}",
+            LastName: "{{ $account->LastName }}",
+            EmployeeID: "{{ $account->EmployeeID }}",
+            AccountType: "{{ $account->AccountType }}",
+            Address: "{{ $account->Address }}",
+            Email: "{{ $account->Email }}",
+            PhoneNumber: "{{ $account->PhoneNumber }}",
+            Username: "{{ $account->Username }}"
+        };
+        showEmployeeDetails(employeeDetails);
+    });
+});
